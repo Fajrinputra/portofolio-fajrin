@@ -13,8 +13,8 @@ export default function Organisasi() {
     getOrganizations().then(setOrgs).finally(() => setLoading(false));
   }, []);
 
-  // Link ke detail: gunakan slug jika ada, fallback ke id
-  const detailLink = (org) => `/organisasi/${org.slug || org.id}`;
+  // Selalu gunakan ID numerik agar link tidak bergantung pada slug yang mungkin kotor
+  const detailLink = (org) => `/organisasi/${org.id}`;
 
   return (
     <div className="bg-bg-primary section-py">
