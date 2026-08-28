@@ -46,9 +46,22 @@ export default function ManageProfil() {
     setSaving(true);
     setMsg('');
     try {
-      let goals = form.goals;
-      try { goals = JSON.parse(form.goals); } catch { goals = form.goals; }
-      await updateProfile({ ...form, goals });
+      // goals HARUS string untuk kolom TEXT di database
+      // Pastikan valid JSON string, jika bukan JSON parse error → kirim apa adanya
+      let goalsStr = form.goals;
+      if (typeof goalsStr !== 'string') {
+        goalsStr = JSON.stringify(goalsStr);
+      }
+      // Validasi: coba parse untuk memastikan formatnya benar
+      try {
+        JSON.parse(goalsStr);
+      } catch {
+        // Jika tidak valid JSON, bungkus sebagai array kosong
+        goalsStr = '[]';
+        setMsg('⚠️ Format Goals tidak valid, dikosongkan. Gunakan format JSON array.');
+      }
+
+      await updateProfile({ ...form, goals: goalsStr });
       setMsg('✅ Profil berhasil disimpan!');
     } catch (err) {
       setMsg(`❌ Error: ${err.response?.data?.message || err.message}`);

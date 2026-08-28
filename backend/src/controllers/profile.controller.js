@@ -16,10 +16,32 @@ exports.getProfile = async (req, res) => {
 exports.updateProfile = async (req, res) => {
   try {
     let profile = await Profile.findOne();
+
+    // Sanitasi: kolom goals bertipe TEXT, harus string
+    const body = { ...req.body };
+
+    if (body.goals !== undefined) {
+      if (typeof body.goals !== 'string') {
+        body.goals = JSON.stringify(body.goals);
+      }
+      // Validasi JSON valid (opsional, untuk keamanan)
+      try { JSON.parse(body.goals); } catch {
+        body.goals = '[]';
+      }
+    }
+
+    // Sanitasi: personal_photos bertipe JSON — pastikan array
+    if (body.personal_photos !== undefined) {
+      if (typeof body.personal_photos === 'string') {
+        try { body.personal_photos = JSON.parse(body.personal_photos); } catch { body.personal_photos = []; }
+      }
+      if (!Array.isArray(body.personal_photos)) body.personal_photos = [];
+    }
+
     if (!profile) {
-      profile = await Profile.create(req.body);
+      profile = await Profile.create(body);
     } else {
-      await profile.update(req.body);
+      await profile.update(body);
     }
     res.json(profile);
   } catch (err) {

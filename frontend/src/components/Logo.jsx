@@ -1,7 +1,8 @@
 /**
- * Logo "Jr" — Monogram Jeje
- * Desain kreatif: huruf J dan r yang saling terhubung
- * Warna: gradient ungu sesuai accent website
+ * Logo "Jr" — persis desain yang dikirim user
+ * j lowercase: batang vertikal + hook melengkung ke kiri bawah
+ * r lowercase: batang vertikal + arch melengkung ke kanan atas
+ * Warna putih di atas background ungu gradient
  */
 export default function Logo({ size = 36, className = '' }) {
   return (
@@ -12,42 +13,50 @@ export default function Logo({ size = 36, className = '' }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="Logo Jeje - Fajrin Putra Pratama"
+      aria-label="Logo Jr - Fajrin Putra Pratama"
     >
-      {/* Background rounded square */}
-      <rect width="100" height="100" rx="22" fill="url(#jjGrad)" />
+      {/* Background ungu gradient */}
+      <rect width="100" height="100" rx="18" fill="url(#jrGradBg)" />
 
-      {/* Huruf J — bold modern */}
-      {/* Batang vertikal J */}
-      <rect x="21" y="18" width="14" height="50" rx="4" fill="white" />
-      {/* Hook bawah J (melengkung ke kiri) */}
+      {/*
+        Huruf j — lowercase
+        - Batang: garis vertikal tipis dari atas ke bawah
+        - Titik: bulat kecil di atas batang
+        - Hook: lengkungan ke kiri di bagian bawah
+      */}
+      {/* Batang j */}
+      <rect x="34" y="30" width="10" height="40" rx="5" fill="white" />
+      {/* Titik j */}
+      <circle cx="39" cy="20" r="5.5" fill="white" />
+      {/* Hook bawah j — melengkung ke kiri */}
       <path
-        d="M35 62 Q35 82 21 82 Q14 82 11 76"
+        d="M44 65 Q44 80 34 80 Q26 80 24 74"
         stroke="white"
-        strokeWidth="14"
+        strokeWidth="10"
         strokeLinecap="round"
         fill="none"
       />
-      {/* Titik di atas J */}
-      <circle cx="28" cy="12" r="6" fill="white" />
 
-      {/* Huruf r — minimalis, menyambung dari J */}
+      {/*
+        Huruf r — lowercase
+        - Batang: garis vertikal tipis
+        - Arch: lengkungan ke kanan di bagian atas batang
+      */}
       {/* Batang r */}
-      <rect x="49" y="38" width="12" height="44" rx="4" fill="white" />
-      {/* Kepala r (lengkungan ke kanan atas) */}
+      <rect x="54" y="40" width="10" height="38" rx="5" fill="white" />
+      {/* Arch r — melengkung ke kanan atas */}
       <path
-        d="M61 44 Q61 30 76 30 L82 30"
+        d="M59 48 Q59 31 72 31 L78 31"
         stroke="white"
-        strokeWidth="12"
+        strokeWidth="10"
         strokeLinecap="round"
         fill="none"
       />
 
       <defs>
-        <linearGradient id="jjGrad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+        <linearGradient id="jrGradBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#7C3AED" />
-          <stop offset="50%" stopColor="#6C5CE7" />
-          <stop offset="100%" stopColor="#4C1D95" />
+          <stop offset="100%" stopColor="#5B21B6" />
         </linearGradient>
       </defs>
     </svg>
