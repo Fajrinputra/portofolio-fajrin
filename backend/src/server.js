@@ -10,6 +10,8 @@ require('./models/Project');
 require('./models/Design');
 require('./models/Photo');
 require('./models/Certificate');
+require('./models/Message');
+
 
 const PORT = process.env.PORT || 5000;
 

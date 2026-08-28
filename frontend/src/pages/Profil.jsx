@@ -154,20 +154,19 @@ export default function Profil() {
               transition={{ duration: 0.5 }}
             >
               <div className="relative">
-                {/* Container foto: lebar fixed tapi tinggi mengikuti foto (auto) */}
+                {/* Container foto: tinggi dan lebar fixed, object-cover agar full-fill tanpa gap */}
                 <div
-                  className="w-64 md:w-80 rounded-2xl overflow-hidden border-2 border-accent/30"
+                  className="w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden border-2 border-accent/30"
                   style={{ background: 'var(--color-bg-secondary)' }}
                 >
                   {profile?.photo_url ? (
                     <img
                       src={profile.photo_url}
                       alt={`Foto profil ${profile.full_name}`}
-                      className="w-full h-auto object-contain block"
-                      style={{ maxHeight: '420px' }}
+                      className="w-full h-full object-cover object-top"
                     />
                   ) : (
-                    <div className="w-full h-72 flex items-center justify-center bg-bg-secondary text-6xl">
+                    <div className="w-full h-full flex items-center justify-center bg-bg-secondary text-6xl">
                       👤
                     </div>
                   )}

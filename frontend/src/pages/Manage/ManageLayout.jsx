@@ -1,5 +1,6 @@
-import { useState, Suspense, lazy } from 'react';
-import { AlertTriangle, User, Map, Building2, Code2, Palette, Camera, Award } from 'lucide-react';
+import { useState, useEffect, Suspense, lazy } from 'react';
+import { AlertTriangle, User, Map, Building2, Code2, Palette, Camera, Award, Inbox } from 'lucide-react';
+import api from '../../services/api';
 
 const ManageProfil = lazy(() => import('./ManageProfil'));
 const ManageJourneys = lazy(() => import('./ManageJourneys'));
@@ -8,8 +9,10 @@ const ManageProjects = lazy(() => import('./ManageProjects'));
 const ManageDesigns = lazy(() => import('./ManageDesigns'));
 const ManagePhotos = lazy(() => import('./ManagePhotos'));
 const ManageCertificates = lazy(() => import('./ManageCertificates'));
+const ManageMessages = lazy(() => import('./ManageMessages'));
 
 const TABS = [
+  { key: 'pesan', label: 'Pesan', icon: Inbox, component: ManageMessages },
   { key: 'profil', label: 'Profil', icon: User, component: ManageProfil },
   { key: 'perjalanan', label: 'Perjalanan', icon: Map, component: ManageJourneys },
   { key: 'organisasi', label: 'Organisasi', icon: Building2, component: ManageOrganizations },
@@ -28,7 +31,27 @@ function LoadingTab() {
 }
 
 export default function ManageLayout() {
-  const [activeTab, setActiveTab] = useState('profil');
+  const [activeTab, setActiveTab] = useState('pesan');
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  // Polling unread count setiap 30 detik
+  useEffect(() => {
+    const fetchCount = () => {
+      api.get('/messages/unread-count')
+        .then(r => setUnreadCount(r.data.count))
+        .catch(() => {});
+    };
+    fetchCount();
+    const interval = setInterval(fetchCount, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Reset unread count saat buka tab pesan
+  useEffect(() => {
+    if (activeTab === 'pesan') {
+      setTimeout(() => setUnreadCount(0), 1000);
+    }
+  }, [activeTab]);
 
   const ActiveComponent = TABS.find(t => t.key === activeTab)?.component;
 
@@ -66,7 +89,7 @@ export default function ManageLayout() {
             <button
               key={key}
               onClick={() => setActiveTab(key)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 flex-1 sm:flex-none justify-center sm:justify-start ${
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 flex-1 sm:flex-none justify-center sm:justify-start relative ${
                 activeTab === key
                   ? 'bg-violet-600 text-white shadow'
                   : 'text-gray-400 hover:text-white hover:bg-gray-800'
@@ -74,6 +97,12 @@ export default function ManageLayout() {
             >
               <Icon size={15} />
               <span className="hidden sm:inline">{label}</span>
+              {/* Badge unread untuk tab pesan */}
+              {key === 'pesan' && unreadCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                  {unreadCount > 9 ? '9+' : unreadCount}
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -86,3 +115,4 @@ export default function ManageLayout() {
     </div>
   );
 }
+

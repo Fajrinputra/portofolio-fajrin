@@ -59,4 +59,11 @@ export const createCertificate = (data) => api.post('/certificates', data).then(
 export const updateCertificate = (id, data) => api.put(`/certificates/${id}`, data).then(r => r.data);
 export const deleteCertificate = (id) => api.delete(`/certificates/${id}`).then(r => r.data);
 
+// --- Messages ---
+export const getMessages = () => api.get('/messages').then(r => r.data);
+export const sendMessage = (data) => api.post('/messages', data).then(r => r.data);
+export const markMessageRead = (id) => api.patch(`/messages/${id}/read`).then(r => r.data);
+export const deleteMessage = (id) => api.delete(`/messages/${id}`).then(r => r.data);
+export const getUnreadCount = () => api.get('/messages/unread-count').then(r => r.data);
+
 export default api;

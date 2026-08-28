@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Mail, AtSign, Code2, MessageCircle, Camera, Download, Send } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import Button from '../components/Button';
+import api from '../services/api';
 
 const contactLinks = [
   {
@@ -44,20 +45,24 @@ const contactLinks = [
 
 export default function Kontak() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('idle');
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implement backend email endpoint or Formspree integration
-    // Sementara gunakan mailto sebagai fallback
-    const subject = encodeURIComponent(`Pesan dari ${form.name}`);
-    const body = encodeURIComponent(`Nama: ${form.name}\nEmail: ${form.email}\n\nPesan:\n${form.message}`);
-    window.open(`mailto:fajrinputrapratama01@gmail.com?subject=${subject}&body=${body}`, '_blank');
-    setStatus('sent');
-    setTimeout(() => setStatus('idle'), 4000);
+    setStatus('sending');
+    try {
+      await api.post('/messages', form);
+      setStatus('sent');
+      setForm({ name: '', email: '', message: '' });
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
+
 
   return (
     <div className="bg-bg-primary section-py">
@@ -128,8 +133,14 @@ export default function Kontak() {
                 />
               </div>
 
-              <Button type="submit" size="lg" disabled={status === 'sent'}>
-                {status === 'sent' ? '✓ Pesan Terkirim!' : (
+              <Button type="submit" size="lg" disabled={status === 'sent' || status === 'sending'}>
+                {status === 'sending' ? (
+                  <><span className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" /> Mengirim...</>
+                ) : status === 'sent' ? (
+                  '✓ Pesan Terkirim!'
+                ) : status === 'error' ? (
+                  '❌ Gagal, coba lagi'
+                ) : (
                   <><Send size={16} /> Kirim Pesan</>
                 )}
               </Button>
