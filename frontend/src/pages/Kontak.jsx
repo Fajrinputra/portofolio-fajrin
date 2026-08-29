@@ -96,7 +96,6 @@ export default function Kontak() {
                   required
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="John Doe"
                   className="form-input"
                 />
               </div>
@@ -112,7 +111,6 @@ export default function Kontak() {
                   required
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="john@example.com"
                   className="form-input"
                 />
               </div>
@@ -128,7 +126,6 @@ export default function Kontak() {
                   required
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Halo Fajrin, saya ingin..."
                   className="form-input resize-none"
                 />
               </div>

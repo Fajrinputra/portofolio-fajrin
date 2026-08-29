@@ -1,6 +1,5 @@
-import { useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { GraduationCap, School, BookOpen, Star } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { GraduationCap, School, BookOpen, Star, Trophy } from 'lucide-react';
 
 const levelIcons = {
   'SD': BookOpen,
@@ -16,6 +15,15 @@ const levelColors = {
   'Kuliah': '#00D9C0',
 };
 
+// Split achievement string menjadi array baris (pisah by \n atau ;)
+function parseAchievements(str) {
+  if (!str) return [];
+  return str
+    .split(/\n|;/)
+    .map(s => s.trim())
+    .filter(Boolean);
+}
+
 export default function Timeline({ items = [] }) {
   return (
     <div className="relative">
@@ -27,7 +35,7 @@ export default function Timeline({ items = [] }) {
           const isEven = index % 2 === 0;
           const Icon = levelIcons[item.level] || BookOpen;
           const color = levelColors[item.level] || '#6C5CE7';
-          const isHighlight = item.achievement;
+          const achievements = parseAchievements(item.achievement);
 
           return (
             <motion.div
@@ -41,14 +49,9 @@ export default function Timeline({ items = [] }) {
               {/* Content box */}
               <div className={`w-full md:w-5/12 ${isEven ? 'md:pr-10 md:text-right' : 'md:pl-10'}`}>
                 <motion.div
-                  className={`glass-card p-6 card-hover ${isHighlight ? 'ring-1 ring-accent-secondary' : ''}`}
+                  className="glass-card p-6 card-hover"
                   whileHover={{ y: -4, boxShadow: '0 8px 40px rgba(108,92,231,0.2)' }}
                 >
-                  {isHighlight && (
-                    <span className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-accent-secondary/10 text-accent-secondary border border-accent-secondary/30 mb-3">
-                      ✨ Highlight
-                    </span>
-                  )}
                   <span className="section-label" style={{ color }}>
                     {item.level}
                   </span>
@@ -59,9 +62,25 @@ export default function Timeline({ items = [] }) {
                   {item.description && (
                     <p className="text-sm text-text-secondary font-body leading-relaxed">{item.description}</p>
                   )}
-                  {item.achievement && (
-                    <div className="mt-3 pt-3 border-t border-border-color">
-                      <p className="text-sm font-medium text-accent-secondary">🏆 {item.achievement}</p>
+
+                  {/* Prestasi — setiap baris dapat ikon trophy sendiri */}
+                  {achievements.length > 0 && (
+                    <div className={`mt-3 pt-3 border-t border-border-color space-y-2 ${isEven ? 'md:text-right' : ''}`}>
+                      {achievements.map((ach, i) => (
+                        <div
+                          key={i}
+                          className={`flex items-start gap-2 ${isEven ? 'md:flex-row-reverse' : ''}`}
+                        >
+                          <Trophy
+                            size={14}
+                            className="flex-shrink-0 mt-0.5"
+                            style={{ color: '#F59E0B' }}
+                          />
+                          <span className="text-sm font-medium leading-snug" style={{ color: '#00D9C0' }}>
+                            {ach}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   )}
                 </motion.div>
@@ -82,3 +101,4 @@ export default function Timeline({ items = [] }) {
     </div>
   );
 }
+
