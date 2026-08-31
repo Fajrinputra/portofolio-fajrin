@@ -6,7 +6,7 @@ const FIELDS = [
   { name: 'title', label: 'Judul Proyek', tableCol: true },
   { name: 'category', label: 'Kategori', type: 'select', options: ['Web Development', 'Enterprise/ERP', 'Lainnya'], tableCol: true },
   { name: 'tagline', label: 'Tagline', full: true },
-  { name: 'thumbnail', label: 'URL Thumbnail', full: true },
+  { name: 'thumbnail', label: 'Thumbnail Proyek', type: 'upload', fileType: 'image', full: true },
   { name: 'role', label: 'Role / Posisi', full: true },
   { name: 'tech_stack', label: 'Tech Stack (pisah koma)', type: 'json', full: true, placeholder: 'React.js, Laravel, MySQL' },
   { name: 'background', label: 'Latar Belakang', type: 'textarea', rows: 4, full: true },

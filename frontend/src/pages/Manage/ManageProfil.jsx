@@ -201,17 +201,26 @@ export default function ManageProfil() {
 
       {/* Foto Pribadi — Galeri untuk Halaman Profil */}
       <div className="bg-gray-900 border border-gray-800 rounded-xl p-6">
-        <div className="mb-5">
-          <h2 className="text-base font-semibold">Foto Pribadi</h2>
-          <p className="text-xs text-gray-500 mt-1">Foto-foto ini akan tampil di halaman Profil sebagai galeri tambahan.</p>
-          {/* Reminder penting */}
-          <div className="mt-2 flex items-start gap-2 bg-amber-500/10 border border-amber-500/30 rounded-lg px-3 py-2">
-            <span className="text-amber-400 text-xs mt-0.5">⚠️</span>
-            <p className="text-xs text-amber-300">
-              Setelah upload foto, <strong>klik "Simpan Profil"</strong> di bawah agar foto tersimpan ke database dan muncul di halaman Profil.
-            </p>
+        <div className="flex items-center justify-between mb-3">
+          <div>
+            <div className="flex items-center gap-2">
+              <h2 className="text-base font-semibold">Foto Pribadi</h2>
+              <span className="text-xs px-2 py-0.5 rounded-full bg-violet-600/20 text-violet-400 font-medium">
+                {(form.personal_photos || []).length} foto
+              </span>
+            </div>
+            <p className="text-xs text-gray-500 mt-1">Foto-foto ini akan tampil di halaman Profil sebagai galeri foto.</p>
           </div>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            disabled={saving}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-violet-600 hover:bg-violet-700 disabled:opacity-50 text-white rounded-lg text-xs font-medium transition-colors"
+          >
+            <Save size={13} /> {saving ? 'Menyimpan...' : 'Simpan Foto'}
+          </button>
         </div>
+
         {/* Upload banyak foto sekaligus */}
         <FileUpload
           label="Upload Foto (bisa pilih banyak sekaligus)"
@@ -224,6 +233,7 @@ export default function ManageProfil() {
           }))}
           preview={false}
         />
+
         {/* Grid preview foto yang sudah diupload */}
         {form.personal_photos && form.personal_photos.length > 0 && (
           <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2 mt-4">
@@ -247,7 +257,7 @@ export default function ManageProfil() {
           </div>
         )}
         {(!form.personal_photos || form.personal_photos.length === 0) && (
-          <p className="text-xs text-gray-600 mt-3 text-center py-4">Belum ada foto. Upload di atas.</p>
+          <p className="text-xs text-gray-600 mt-3 text-center py-4">Belum ada foto. Upload di atas lalu klik "Simpan Foto" atau "Simpan Profil".</p>
         )}
       </div>
 
