@@ -4,22 +4,25 @@ import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Logo from './Logo';
 import LanguageToggle from './LanguageToggle';
-
-const NAV_LINKS = [
-  { label: 'Beranda', path: '/' },
-  { label: 'Profil', path: '/profil' },
-  { label: 'Perjalanan', path: '/perjalanan' },
-  { label: 'Organisasi', path: '/organisasi' },
-  { label: 'Proyek', path: '/proyek' },
-  { label: 'UI/UX', path: '/uiux' },
-  { label: 'Foto', path: '/foto' },
-  { label: 'Sertifikat', path: '/sertifikat' },
-  { label: 'Kontak', path: '/kontak' },
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Navbar() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Nav links with translated labels
+  const NAV_LINKS = [
+    { label: t('nav_home'), path: '/' },
+    { label: t('nav_profile'), path: '/profil' },
+    { label: t('nav_journey'), path: '/perjalanan' },
+    { label: t('nav_org'), path: '/organisasi' },
+    { label: t('nav_project'), path: '/proyek' },
+    { label: t('nav_uiux'), path: '/uiux' },
+    { label: t('nav_photo'), path: '/foto' },
+    { label: t('nav_certificate'), path: '/sertifikat' },
+    { label: t('nav_contact'), path: '/kontak' },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -59,7 +62,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop Nav — semua link flat */}
+        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-5" aria-label="Navigasi utama">
           {NAV_LINKS.map(({ label, path }) => (
             <NavLink key={path} to={path} end={path === '/'} className={linkClass}>

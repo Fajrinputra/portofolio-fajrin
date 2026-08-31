@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { getJourneys } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Timeline from '../components/Timeline';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Perjalanan() {
+  const { t, lang } = useLanguage();
   const [journeys, setJourneys] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,9 +20,12 @@ export default function Perjalanan() {
       <div className="container-custom">
         <div className="max-w-2xl mb-14">
           <SectionHeading
-            label="Riwayat Pendidikan"
-            title="Perjalanan Pendidikan"
-            subtitle="Dari bangku SD hingga meraih gelar Sarjana Sistem Informasi dari Universitas Andalas — perjalanan panjang yang membentuk siapa saya hari ini."
+            label={t('journey_label')}
+            title={t('journey_title')}
+            subtitle={lang === 'en'
+              ? 'From elementary school to earning a Bachelor of Information Systems from Andalas University — a long journey that shaped who I am today.'
+              : 'Dari bangku SD hingga meraih gelar Sarjana Sistem Informasi dari Universitas Andalas — perjalanan panjang yang membentuk siapa saya hari ini.'
+            }
           />
         </div>
 

@@ -4,8 +4,10 @@ import { Award, Calendar, ExternalLink, Tag } from 'lucide-react';
 import { getCertificates } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Lightbox from '../components/Lightbox';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Sertifikat() {
+  const { t, lang } = useLanguage();
   const [certs, setCerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [lightbox, setLightbox] = useState({ open: false, index: 0, filtered: [] });
@@ -18,15 +20,17 @@ export default function Sertifikat() {
   // Ambil daftar kategori unik
   const categories = useMemo(() => {
     const cats = [...new Set(certs.map(c => c.category || 'Umum').filter(Boolean))].sort();
-    return ['Semua', ...cats];
-  }, [certs]);
+    return [t('cert_all'), ...cats];
+  }, [certs, t]);
 
+  // Filter berdasarkan kategori aktif — reset saat bahasa berubah
+  const allLabel = t('cert_all');
   // Filter berdasarkan kategori aktif
   const filtered = useMemo(() =>
-    activeCategory === 'Semua'
+    activeCategory === allLabel
       ? certs
       : certs.filter(c => (c.category || 'Umum') === activeCategory),
-    [certs, activeCategory]
+    [certs, activeCategory, allLabel]
   );
 
   const openLightbox = (cert) => {
@@ -39,9 +43,12 @@ export default function Sertifikat() {
       <div className="container-custom">
         <div className="max-w-2xl mb-10">
           <SectionHeading
-            label="Pencapaian"
-            title="Sertifikat & Pencapaian"
-            subtitle="Berbagai sertifikasi dan penghargaan yang telah saya raih sebagai bukti kompetensi dan semangat belajar."
+            label={t('cert_label')}
+            title={t('cert_title')}
+            subtitle={lang === 'en'
+              ? 'Various certifications and awards I have earned as proof of competence and enthusiasm for learning.'
+              : 'Berbagai sertifikasi dan penghargaan yang telah saya raih sebagai bukti kompetensi dan semangat belajar.'
+            }
           />
         </div>
 

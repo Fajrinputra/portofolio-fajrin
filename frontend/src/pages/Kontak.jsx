@@ -4,6 +4,7 @@ import { Mail, AtSign, Code2, MessageCircle, Camera, Download, Send } from 'luci
 import SectionHeading from '../components/SectionHeading';
 import Button from '../components/Button';
 import api from '../services/api';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const contactLinks = [
   {
@@ -44,6 +45,7 @@ const contactLinks = [
 ];
 
 export default function Kontak() {
+  const { t, lang } = useLanguage();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
@@ -70,8 +72,11 @@ export default function Kontak() {
         <div className="max-w-2xl mb-14">
           <SectionHeading
             label="Kontak"
-            title="Mari Terhubung"
-            subtitle="Saya terbuka untuk peluang kerja, freelance, kolaborasi proyek, atau sekadar ngobrol tentang teknologi dan desain."
+            title={t('contact_title')}
+            subtitle={lang === 'en'
+              ? "I'm open to job opportunities, freelance, project collaboration, or just chatting about technology and design."
+              : "Saya terbuka untuk peluang kerja, freelance, kolaborasi proyek, atau sekadar ngobrol tentang teknologi dan desain."
+            }
           />
         </div>
 
@@ -83,11 +88,11 @@ export default function Kontak() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="font-display font-semibold text-text-primary mb-6">Kirim Pesan</h3>
+            <h3 className="font-display font-semibold text-text-primary mb-6">{t('contact_send')}</h3>
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-text-secondary mb-2">
-                  Nama Lengkap
+                  {t('contact_name')}
                 </label>
                 <input
                   id="name"
@@ -102,7 +107,7 @@ export default function Kontak() {
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-text-secondary mb-2">
-                  Alamat Email
+                  {t('contact_email')}
                 </label>
                 <input
                   id="email"
@@ -117,7 +122,7 @@ export default function Kontak() {
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-text-secondary mb-2">
-                  Pesan
+                  {t('contact_message')}
                 </label>
                 <textarea
                   id="message"
@@ -132,13 +137,13 @@ export default function Kontak() {
 
               <Button type="submit" size="lg" disabled={status === 'sent' || status === 'sending'}>
                 {status === 'sending' ? (
-                  <><span className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" /> Mengirim...</>
+                  <><span className="w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin" /> {t('contact_sending')}</>
                 ) : status === 'sent' ? (
-                  '✓ Pesan Terkirim!'
+                  t('contact_sent')
                 ) : status === 'error' ? (
-                  '❌ Gagal, coba lagi'
+                  t('contact_error')
                 ) : (
-                  <><Send size={16} /> Kirim Pesan</>
+                  <><Send size={16} /> {t('contact_send')}</>
                 )}
               </Button>
             </form>
@@ -152,7 +157,7 @@ export default function Kontak() {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <div className="glass-card p-6">
-              <h3 className="font-display font-semibold text-text-primary mb-5">Kontak Langsung</h3>
+              <h3 className="font-display font-semibold text-text-primary mb-5">{t('contact_direct')}</h3>
               <div className="flex flex-col gap-4">
                 {contactLinks.map(({ icon: Icon, label, value, href, color }) => (
                   <a
@@ -179,12 +184,12 @@ export default function Kontak() {
 
             {/* Download CV */}
             <div className="glass-card p-6">
-              <h3 className="font-display font-semibold text-text-primary mb-3">Curriculum Vitae</h3>
+              <h3 className="font-display font-semibold text-text-primary mb-3">{t('contact_cv')}</h3>
               <p className="text-sm text-text-secondary font-body mb-4">
-                Unduh CV saya untuk informasi lengkap pengalaman dan kemampuan.
+                {t('contact_cv_desc')}
               </p>
               <Button href="/assets/CV-Fajrin-Putra-Pratama.pdf" variant="outline" size="sm">
-                <Download size={15} /> Download CV
+                <Download size={15} /> {t('contact_download_cv')}
               </Button>
             </div>
           </motion.div>

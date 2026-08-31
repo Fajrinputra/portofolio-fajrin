@@ -5,8 +5,26 @@ import { getProfile } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Button from '../components/Button';
 import SkillBadge from '../components/SkillBadge';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const goalIcons = ['💡', '🔄', '🤝'];
+
+// Auto-assign emoji berdasarkan nama kategori
+function getCategoryIcon(name = '') {
+  const lower = name.toLowerCase();
+  if (lower.includes('language') || lower.includes('bahasa')) return '💻';
+  if (lower.includes('web') || lower.includes('framework')) return '🌐';
+  if (lower.includes('tool') || lower.includes('platform')) return '🛠️';
+  if (lower.includes('ai') || lower.includes('modern')) return '🤖';
+  if (lower.includes('algorithm') || lower.includes('cs') || lower.includes('structure')) return '🧠';
+  if (lower.includes('soft') || lower.includes('skill') || lower.includes('leadership')) return '💛';
+  if (lower.includes('database') || lower.includes('data')) return '🗄️';
+  if (lower.includes('design') || lower.includes('ui') || lower.includes('ux')) return '🎨';
+  if (lower.includes('mobile') || lower.includes('android') || lower.includes('ios')) return '📱';
+  if (lower.includes('cloud') || lower.includes('devops') || lower.includes('server')) return '☁️';
+  if (lower.includes('security') || lower.includes('network')) return '🔒';
+  return '📦';
+}
 
 // Komponen Galeri Foto Pribadi dengan Lightbox
 function PersonalGallery({ photos }) {
@@ -109,9 +127,11 @@ function PersonalGallery({ photos }) {
 
 
 export default function Profil() {
+  const { t } = useLanguage();
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState(0);
+
 
   useEffect(() => {
     getProfile()
@@ -287,7 +307,7 @@ export default function Profil() {
       {/* Skills Section — Grid kartu per kategori */}
       <section className="section-py">
         <div className="container-custom">
-          <SectionHeading label="Kemampuan" title="Skill & Teknologi" />
+          <SectionHeading label={t('profil_skills_label')} title={t('profil_skills_title')} />
 
           {skillCategories.length > 0 ? (
             <motion.div
@@ -307,7 +327,7 @@ export default function Profil() {
                 >
                   {/* Header kategori */}
                   <div className="flex items-center gap-2.5 mb-4">
-                    <span className="text-xl">{cat.icon || '📦'}</span>
+                    <span className="text-xl">{cat.icon || getCategoryIcon(cat.category)}</span>
                     <h3 className="font-display font-semibold text-text-primary text-base">
                       {cat.category}
                     </h3>

@@ -3,10 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getProjects } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/Card';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const CATEGORIES = ['Semua', 'Enterprise/ERP', 'Web Development', 'Lainnya'];
 
 export default function Proyek() {
+  const { t, lang } = useLanguage();
   const [projects, setProjects] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [activeFilter, setActiveFilter] = useState('Semua');
@@ -32,9 +34,12 @@ export default function Proyek() {
       <div className="container-custom">
         <div className="max-w-2xl mb-10">
           <SectionHeading
-            label="Portfolio"
-            title="Proyek Pengembangan"
-            subtitle="Kumpulan proyek software yang saya kerjakan — mulai dari sistem ERP hingga web application."
+            label={t('project_label')}
+            title={t('project_title')}
+            subtitle={lang === 'en'
+              ? 'A collection of software projects I have worked on — from ERP systems to web applications.'
+              : 'Kumpulan proyek software yang saya kerjakan — mulai dari sistem ERP hingga web application.'
+            }
           />
         </div>
 
