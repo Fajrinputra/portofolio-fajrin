@@ -204,11 +204,11 @@ export default function Profil() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <span className="section-label">Profil Diri</span>
+              <span className="section-label">{t('profil_label')}</span>
               <h1 className="font-display font-bold text-h1 text-text-primary mt-2 mb-2 leading-tight">
                 {profile?.full_name || 'Fajrin Putra Pratama'}
               </h1>
-              <p className="text-text-secondary text-lg mb-6">{profile?.tagline}</p>
+              <p className="text-text-secondary text-lg mb-6 no-justify">{profile?.tagline}</p>
 
               {/* Data diri pills */}
               <div className="flex flex-wrap gap-3 mb-6">
@@ -231,9 +231,9 @@ export default function Profil() {
                 <div className="flex items-start gap-3">
                   <GraduationCap size={20} className="text-accent flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-medium text-text-primary">S1 Sistem Informasi, Universitas Andalas</p>
-                    <p className="text-xs text-text-secondary mt-0.5">2022 – 2026 · Predikat Pujian · IPK 3.59</p>
-                    <p className="text-xs text-accent-secondary mt-1">Masa studi 3 tahun 11 bulan</p>
+                    <p className="text-sm font-medium text-text-primary no-justify">{t('profil_education')}</p>
+                    <p className="text-xs text-text-secondary mt-0.5 no-justify">{t('profil_edu_period')}</p>
+                    <p className="text-xs text-accent-secondary mt-1 no-justify">{t('profil_edu_duration')}</p>
                   </div>
                 </div>
               </div>
@@ -241,7 +241,7 @@ export default function Profil() {
               {/* CTA */}
               {profile?.cv_url && (
                 <Button href={profile.cv_url} size="lg">
-                  <Download size={18} /> Download CV
+                  <Download size={18} /> {t('profil_download_cv')}
                 </Button>
               )}
             </motion.div>
@@ -253,7 +253,7 @@ export default function Profil() {
       {profile?.bio && (
         <section className="section-py border-b border-border-color">
           <div className="container-custom max-w-3xl">
-            <SectionHeading label="Bio" title="Tentang Saya" />
+            <SectionHeading label={t('profil_bio_label')} title={t('profil_bio_title')} />
             <motion.div
               className="mt-8 space-y-4 text-text-secondary font-body leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
@@ -283,7 +283,7 @@ export default function Profil() {
       {goals.length > 0 && (
         <section className="section-py border-b border-border-color bg-bg-secondary">
           <div className="container-custom">
-            <SectionHeading label="Values" title="Prinsip & Tujuan" center />
+            <SectionHeading label={t('profil_goals_label')} title={t('profil_goals_title')} center />
             <div className="grid md:grid-cols-3 gap-6 mt-10">
               {goals.map((goal, i) => (
                 <motion.div

@@ -7,9 +7,11 @@ import SectionHeading from '../components/SectionHeading';
 import Button from '../components/Button';
 import Card from '../components/Card';
 import SkillBadge from '../components/SkillBadge';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // --- Hero Section ---
 function HeroSection({ profile }) {
+  const { t } = useLanguage();
   const textVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.12, duration: 0.6, ease: 'easeOut' } }),
@@ -28,7 +30,7 @@ function HeroSection({ profile }) {
       <div className="container-custom relative z-10 py-20">
         <div className="max-w-3xl">
           <motion.div custom={0} variants={textVariants} initial="hidden" animate="visible">
-            <span className="section-label">👋 Halo, saya</span>
+            <span className="section-label">{t('home_greeting')}</span>
           </motion.div>
 
           <motion.h1
@@ -48,6 +50,7 @@ function HeroSection({ profile }) {
             initial="hidden"
             animate="visible"
             className="text-xl md:text-2xl text-text-secondary font-body mb-6 leading-relaxed"
+            style={{ textAlign: 'left' }}
           >
             {profile?.tagline || 'Fresh Graduate Sistem Informasi · Developer & Designer'}
           </motion.p>
@@ -59,7 +62,7 @@ function HeroSection({ profile }) {
             animate="visible"
             className="text-text-secondary font-body max-w-2xl mb-10 leading-relaxed"
           >
-            {profile?.bio?.split('.')[0]}. Saya bersemangat dalam membangun produk digital yang bermakna.
+            {profile?.bio?.split('.')[0]}. {t('home_motivated')}
           </motion.p>
 
           <motion.div
@@ -70,10 +73,10 @@ function HeroSection({ profile }) {
             className="flex flex-wrap gap-4"
           >
             <Button href="/proyek" size="lg">
-              Lihat Proyek <ArrowRight size={18} />
+              {t('home_cta_project')} <ArrowRight size={18} />
             </Button>
             <Button href="/kontak" variant="outline" size="lg">
-              Hubungi Saya
+              {t('home_cta_contact')}
             </Button>
           </motion.div>
         </div>
@@ -119,7 +122,7 @@ function SkillsMarquee() {
 }
 
 // --- Preview Section ---
-function PreviewSection({ title, label, icon: Icon, href, children }) {
+function PreviewSection({ title, label, icon: Icon, href, seeAllText, children }) {
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -133,7 +136,7 @@ function PreviewSection({ title, label, icon: Icon, href, children }) {
           </div>
         </div>
         <Link to={href} className="flex items-center gap-1 text-sm text-accent hover:gap-2 transition-all font-medium">
-          Lihat Semua <ChevronRight size={16} />
+          {seeAllText} <ChevronRight size={16} />
         </Link>
       </div>
       {children}
@@ -143,6 +146,7 @@ function PreviewSection({ title, label, icon: Icon, href, children }) {
 
 // --- CTA Section ---
 function CTASection() {
+  const { t } = useLanguage();
   return (
     <section className="section-py">
       <div className="container-custom">
@@ -154,18 +158,18 @@ function CTASection() {
           viewport={{ once: true }}
         >
           <div className="absolute inset-0 border border-accent/20 rounded-2xl pointer-events-none" />
-          <span className="section-label">Mari Berkolaborasi</span>
+          <span className="section-label">{t('home_cta_label')}</span>
           <h2 className="font-display font-bold text-h2 text-text-primary mt-3 mb-4">
-            Punya ide? Mari wujudkan<br className="hidden md:block" />
-            <span className="gradient-text"> bersama.</span>
+            {t('home_cta_title')}<br className="hidden md:block" />
+            <span className="gradient-text">{t('home_cta_together')}</span>
           </h2>
           <p className="text-text-secondary font-body mb-8 max-w-lg mx-auto">
-            Saya terbuka untuk peluang kerja, freelance, maupun kolaborasi proyek.
+            {t('home_cta_desc')}
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button href="/kontak" size="lg">Hubungi Saya</Button>
+            <Button href="/kontak" size="lg">{t('home_cta_contact')}</Button>
             <Button href="/profil" variant="outline" size="lg">
-              <Download size={18} /> Download CV
+              <Download size={18} /> {t('home_download_cv')}
             </Button>
           </div>
         </motion.div>
@@ -176,6 +180,7 @@ function CTASection() {
 
 // --- Main Home Page ---
 export default function Home() {
+  const { t } = useLanguage();
   const [profile, setProfile] = useState(null);
   const [projects, setProjects] = useState([]);
   const [photos, setPhotos] = useState([]);
@@ -185,6 +190,13 @@ export default function Home() {
     getProjects().then(data => setProjects(data.slice(0, 3))).catch(() => {});
     getPhotos().then(data => setPhotos(data.slice(0, 6))).catch(() => {});
   }, []);
+
+  const stats = [
+    { value: '3.59', label: t('home_stat_gpa'), suffix: '' },
+    { value: '4', label: t('home_stat_projects'), suffix: '+' },
+    { value: '3', label: t('home_stat_design'), suffix: '+' },
+    { value: '2026', label: t('home_stat_graduate'), suffix: '' },
+  ];
 
   return (
     <>
@@ -202,14 +214,14 @@ export default function Home() {
               transition={{ duration: 0.5 }}
             >
               <SectionHeading
-                label="Tentang Saya"
-                title="Fresh Graduate yang Bersemangat"
-                subtitle={profile?.bio || 'Memuat...'}
+                label={t('home_about_label')}
+                title={t('home_about_title')}
+                subtitle={profile?.bio || t('home_loading')}
               />
               <div className="flex gap-4 mt-8">
-                <Button href="/profil">Selengkapnya</Button>
+                <Button href="/profil">{t('home_more')}</Button>
                 <Button href="/profil" variant="outline">
-                  <Download size={16} /> Download CV
+                  <Download size={16} /> {t('home_download_cv')}
                 </Button>
               </div>
             </motion.div>
@@ -222,12 +234,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              {[
-                { value: '3.59', label: 'IPK', suffix: '' },
-                { value: '4', label: 'Proyek', suffix: '+' },
-                { value: '3', label: 'Design Case Study', suffix: '+' },
-                { value: '2026', label: 'Lulus', suffix: '' },
-              ].map(({ value, label, suffix }, i) => (
+              {stats.map(({ value, label, suffix }, i) => (
                 <motion.div
                   key={label}
                   className="glass-card p-6 text-center"
@@ -237,7 +244,7 @@ export default function Home() {
                   transition={{ delay: i * 0.1 }}
                 >
                   <p className="font-display font-bold text-3xl gradient-text">{value}{suffix}</p>
-                  <p className="text-sm text-text-secondary mt-1">{label}</p>
+                  <p className="text-sm text-text-secondary mt-1 no-justify">{label}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -249,7 +256,13 @@ export default function Home() {
       <section className="section-py bg-bg-secondary">
         <div className="container-custom flex flex-col gap-14">
           {/* Projects preview */}
-          <PreviewSection title="Proyek Terbaru" label="Portfolio" icon={Code2} href="/proyek">
+          <PreviewSection
+            title={t('home_projects_title')}
+            label={t('home_projects_label')}
+            icon={Code2}
+            href="/proyek"
+            seeAllText={t('home_see_all')}
+          >
             {projects.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {projects.map((p, i) => (
@@ -266,12 +279,18 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <p className="text-text-secondary text-sm">Belum ada proyek. Tambahkan di <a href="/manage" className="text-accent">/manage</a></p>
+              <p className="text-text-secondary text-sm">{t('home_no_project')} {t('add_to_manage')} <a href="/manage" className="text-accent">/manage</a></p>
             )}
           </PreviewSection>
 
           {/* Photo preview */}
-          <PreviewSection title="Foto Freelance" label="Fotografi" icon={Camera} href="/foto">
+          <PreviewSection
+            title={t('home_photo_title')}
+            label={t('home_photo_label')}
+            icon={Camera}
+            href="/foto"
+            seeAllText={t('home_see_all')}
+          >
             {photos.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
                 {photos.map((photo, i) => (
@@ -294,7 +313,7 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <p className="text-text-secondary text-sm">Belum ada foto. Tambahkan di <a href="/manage" className="text-accent">/manage</a></p>
+              <p className="text-text-secondary text-sm">{t('home_no_photo')} {t('add_to_manage')} <a href="/manage" className="text-accent">/manage</a></p>
             )}
           </PreviewSection>
         </div>

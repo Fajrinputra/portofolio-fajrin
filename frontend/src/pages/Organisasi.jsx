@@ -4,8 +4,10 @@ import { motion } from 'framer-motion';
 import { Building2, Calendar, Briefcase, Images, ArrowRight } from 'lucide-react';
 import { getOrganizations } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Organisasi() {
+  const { t } = useLanguage();
   const [orgs, setOrgs] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,9 +23,9 @@ export default function Organisasi() {
       <div className="container-custom">
         <div className="max-w-2xl mb-14">
           <SectionHeading
-            label="Pengalaman"
-            title="Pengalaman Organisasi"
-            subtitle="Keterlibatan aktif dalam berbagai organisasi yang membentuk kemampuan kepemimpinan dan kolaborasi saya."
+            label={t('org_label')}
+            title={t('org_title')}
+            subtitle={t('org_subtitle')}
           />
         </div>
 
@@ -33,7 +35,7 @@ export default function Organisasi() {
           </div>
         ) : orgs.length === 0 ? (
           <p className="text-text-secondary text-center py-12">
-            Belum ada data organisasi. Tambahkan di <a href="/manage" className="text-accent">/manage</a>
+            {t('org_empty')} {t('add_to_manage')} <a href="/manage" className="text-accent">/manage</a>
           </p>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -69,12 +71,12 @@ export default function Organisasi() {
 
                     <div className="flex items-center gap-2 mb-1">
                       <Briefcase size={13} className="text-accent flex-shrink-0" />
-                      <span className="text-sm text-accent font-medium">{org.role}</span>
+                      <span className="text-sm text-accent font-medium no-justify">{org.role}</span>
                     </div>
 
                     <div className="flex items-center gap-2 mb-4">
                       <Calendar size={13} className="text-text-secondary flex-shrink-0" />
-                      <span className="text-xs text-text-secondary">{org.period}</span>
+                      <span className="text-xs text-text-secondary no-justify">{org.period}</span>
                     </div>
 
                     {org.description && (
@@ -86,15 +88,15 @@ export default function Organisasi() {
                     {/* Footer bawah card */}
                     <div className="flex items-center justify-between mt-auto pt-3 border-t border-border-color">
                       {gallery.length > 0 ? (
-                        <span className="flex items-center gap-1.5 text-xs text-text-secondary">
+                        <span className="flex items-center gap-1.5 text-xs text-text-secondary no-justify">
                           <Images size={12} className="text-accent" />
-                          {gallery.length} foto kegiatan
+                          {gallery.length} {t('org_gallery').toLowerCase()}
                         </span>
                       ) : (
                         <span />
                       )}
-                      <span className="flex items-center gap-1 text-xs text-accent font-medium group-hover:gap-2 transition-all">
-                        Lihat Detail <ArrowRight size={12} />
+                      <span className="flex items-center gap-1 text-xs text-accent font-medium group-hover:gap-2 transition-all no-justify">
+                        {t('org_detail')} <ArrowRight size={12} />
                       </span>
                     </div>
                   </Link>

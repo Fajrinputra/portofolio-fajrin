@@ -62,6 +62,21 @@ h1, h2, h3, h4, h5 {
   line-height: 1.2;
 }
 
+/* Rata kiri-kanan untuk semua paragraf deskripsi */
+p, .font-body {
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Kecualikan elemen yang tidak perlu justify */
+label, .section-label, .no-justify,
+nav p, button p, a p,
+.text-center p, .text-right p {
+  text-align: unset;
+  hyphens: unset;
+}
+
+
 img {
   max-width: 100%;
   height: auto;

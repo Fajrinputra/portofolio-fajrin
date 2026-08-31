@@ -3,8 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getDesigns } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/Card';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function UiUx() {
+  const { t } = useLanguage();
   const [designs, setDesigns] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [categories, setCategories] = useState(['Semua']);
@@ -30,9 +32,9 @@ export default function UiUx() {
       <div className="container-custom">
         <div className="max-w-2xl mb-10">
           <SectionHeading
-            label="Design"
-            title="Design UI/UX"
-            subtitle="Kumpulan case study desain antarmuka yang saya kerjakan menggunakan Figma."
+            label={t('uiux_label')}
+            title={t('uiux_title')}
+            subtitle={t('uiux_subtitle')}
           />
         </div>
 
@@ -84,7 +86,7 @@ export default function UiUx() {
             </AnimatePresence>
             {filtered.length === 0 && !loading && (
               <p className="col-span-3 text-center text-text-secondary py-12">
-                Belum ada design. Tambahkan di <a href="/manage" className="text-accent">/manage</a>
+                {t('uiux_empty')} {t('add_to_manage')} <a href="/manage" className="text-accent">/manage</a>
               </p>
             )}
           </motion.div>

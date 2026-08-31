@@ -3,12 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { getPhotos } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Lightbox from '../components/Lightbox';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Foto() {
+  const { t } = useLanguage();
   const [photos, setPhotos] = useState([]);
   const [filtered, setFiltered] = useState([]);
-  const [categories, setCategories] = useState(['Semua']);
-  const [activeFilter, setActiveFilter] = useState('Semua');
+  const [categories, setCategories] = useState([]);
+  const [activeFilter, setActiveFilter] = useState('__all__');
   const [loading, setLoading] = useState(true);
   const [lightbox, setLightbox] = useState({ open: false, index: 0 });
 
@@ -16,13 +18,13 @@ export default function Foto() {
     getPhotos().then(data => {
       setPhotos(data);
       setFiltered(data);
-      const cats = ['Semua', ...new Set(data.map(p => p.category).filter(Boolean))];
+      const cats = [...new Set(data.map(p => p.category).filter(Boolean))];
       setCategories(cats);
     }).finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
-    if (activeFilter === 'Semua') setFiltered(photos);
+    if (activeFilter === '__all__') setFiltered(photos);
     else setFiltered(photos.filter(p => p.category === activeFilter));
   }, [activeFilter, photos]);
 
@@ -33,14 +35,25 @@ export default function Foto() {
       <div className="container-custom">
         <div className="max-w-2xl mb-10">
           <SectionHeading
-            label="Fotografi"
-            title="Hasil Foto Freelance"
-            subtitle="Dokumentasi momen berharga — wedding, event, produk, dan portrait yang telah saya abadikan."
+            label={t('photo_label')}
+            title={t('photo_title')}
+            subtitle={t('photo_subtitle')}
           />
         </div>
 
         {/* Filter */}
         <div className="flex flex-wrap gap-2 mb-10">
+          <motion.button
+            onClick={() => setActiveFilter('__all__')}
+            whileTap={{ scale: 0.97 }}
+            className={`px-5 py-2 rounded-btn text-sm font-medium transition-all duration-200 ${
+              activeFilter === '__all__'
+                ? 'bg-accent text-white shadow-glow'
+                : 'bg-bg-secondary border border-border-color text-text-secondary hover:border-accent hover:text-accent'
+            }`}
+          >
+            {t('photo_all')}
+          </motion.button>
           {categories.map(cat => (
             <motion.button
               key={cat}
@@ -63,7 +76,7 @@ export default function Foto() {
           </div>
         ) : filtered.length === 0 ? (
           <p className="text-center text-text-secondary py-12">
-            Belum ada foto. Tambahkan di <a href="/manage" className="text-accent">/manage</a>
+            {t('photo_empty')} {t('add_to_manage')} <a href="/manage" className="text-accent">/manage</a>
           </p>
         ) : (
           /* Masonry Grid */
