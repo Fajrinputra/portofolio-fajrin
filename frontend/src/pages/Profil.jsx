@@ -28,6 +28,7 @@ function getCategoryIcon(name = '') {
 
 // Komponen Galeri Foto Pribadi dengan Lightbox
 function PersonalGallery({ photos }) {
+  const { t } = useLanguage();
   const [lightboxIdx, setLightboxIdx] = useState(null);
 
   useEffect(() => {
@@ -42,12 +43,12 @@ function PersonalGallery({ photos }) {
   }, [lightboxIdx, photos.length]);
 
   return (
-    <section className="section-py border-b border-border-color">
+    <section className="section-py">
       <div className="container-custom">
         <SectionHeading
-          label="Galeri"
-          title="Foto Saya"
-          subtitle="Kumpulan momen dan kenangan yang membentuk perjalanan saya."
+          label={t('profil_gallery_label')}
+          title={t('profil_gallery_title')}
+          subtitle={t('profil_gallery_subtitle')}
         />
         <motion.div
           initial={{ opacity: 0 }}
@@ -268,17 +269,6 @@ export default function Profil() {
         </section>
       )}
 
-      {/* Personal Photos Gallery */}
-      {(() => {
-        const photos = Array.isArray(profile?.personal_photos)
-          ? profile.personal_photos
-          : (() => { try { return JSON.parse(profile?.personal_photos || '[]'); } catch { return []; } })();
-        if (!photos || photos.length === 0) return null;
-        return (
-          <PersonalGallery photos={photos} />
-        );
-      })()}
-
       {/* Goals/Values */}
       {goals.length > 0 && (
         <section className="section-py border-b border-border-color bg-bg-secondary">
@@ -305,7 +295,7 @@ export default function Profil() {
       )}
 
       {/* Skills Section — Grid kartu per kategori */}
-      <section className="section-py">
+      <section className="section-py border-b border-border-color">
         <div className="container-custom">
           <SectionHeading label={t('profil_skills_label')} title={t('profil_skills_title')} />
 
@@ -347,10 +337,21 @@ export default function Profil() {
               ))}
             </motion.div>
           ) : (
-            <p className="text-text-secondary mt-6">Belum ada data skill. Isi di <a href="/manage" className="text-accent">/manage</a></p>
+            <p className="text-text-secondary mt-6">{t('profil_no_skill')} <a href="/manage" className="text-accent">/manage</a></p>
           )}
         </div>
       </section>
+
+      {/* Personal Photos Gallery — Tampil setelah Skills */}
+      {(() => {
+        const photos = Array.isArray(profile?.personal_photos)
+          ? profile.personal_photos
+          : (() => { try { return JSON.parse(profile?.personal_photos || '[]'); } catch { return []; } })();
+        if (!photos || photos.length === 0) return null;
+        return (
+          <PersonalGallery photos={photos} />
+        );
+      })()}
     </div>
   );
 }

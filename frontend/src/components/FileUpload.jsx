@@ -44,17 +44,32 @@ export default function FileUpload({
     setSuccess(false);
 
     try {
-      if (multiple && files.length > 1) {
-        const formData = new FormData();
-        Array.from(files).forEach(f => formData.append('files', f));
-        const res = await fetch(`${API_BASE}/api/upload/multiple`, {
-          method: 'POST',
-          body: formData,
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Upload gagal');
-        const urls = data.files.map(f => `${API_BASE}${f.url}`);
-        onMultipleChange?.(urls);
+      if (multiple) {
+        if (files.length > 1) {
+          const formData = new FormData();
+          Array.from(files).forEach(f => formData.append('files', f));
+          const res = await fetch(`${API_BASE}/api/upload/multiple`, {
+            method: 'POST',
+            body: formData,
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'Upload gagal');
+          const urls = data.files.map(f => `${API_BASE}${f.url}`);
+          onMultipleChange?.(urls);
+          if (urls.length > 0) onChange?.(urls[0]);
+        } else {
+          const formData = new FormData();
+          formData.append('file', files[0]);
+          const res = await fetch(`${API_BASE}/api/upload?type=${type}`, {
+            method: 'POST',
+            body: formData,
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || 'Upload gagal');
+          const singleUrl = `${API_BASE}${data.url}`;
+          onMultipleChange?.([singleUrl]);
+          onChange?.(singleUrl);
+        }
       } else {
         const formData = new FormData();
         formData.append('file', files[0]);
