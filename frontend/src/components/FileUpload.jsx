@@ -167,7 +167,7 @@ export default function FileUpload({
               <span className="text-sm"> atau drag & drop</span>
             </div>
             <span className="text-xs opacity-60">
-              {isImage ? 'JPG, PNG, WebP, GIF' : 'PDF'} — maks. 10MB
+              {isImage ? 'JPG, PNG, WebP, GIF' : 'PDF'} — maks. 20MB
               {multiple && ' (bisa pilih banyak sekaligus)'}
             </span>
           </div>
