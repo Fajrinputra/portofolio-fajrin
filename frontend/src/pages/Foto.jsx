@@ -111,9 +111,6 @@ export default function Foto() {
                       {photo.title && (
                         <p className="text-white font-display font-semibold text-sm mt-1">{photo.title}</p>
                       )}
-                      {photo.client_name && (
-                        <p className="text-white/60 text-xs mt-0.5">Klien: {photo.client_name}</p>
-                      )}
                     </div>
                   </motion.div>
                 </motion.div>
@@ -132,7 +129,6 @@ export default function Foto() {
           onPrev={() => setLightbox(p => ({ ...p, index: Math.max(0, p.index - 1) }))}
           onNext={() => setLightbox(p => ({ ...p, index: Math.min(filtered.length - 1, p.index + 1) }))}
           title={filtered[lightbox.index]?.title}
-          client={filtered[lightbox.index]?.client_name}
         />
       )}
     </div>
