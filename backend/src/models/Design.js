@@ -10,6 +10,7 @@ const Design = sequelize.define('Design', {
   description: { type: DataTypes.TEXT },
   process: { type: DataTypes.TEXT, comment: 'Ringkas proses desain: riset, wireframe, hi-fi' },
   gallery: { type: DataTypes.JSON, defaultValue: [] },
+  tags: { type: DataTypes.JSON, defaultValue: [], comment: 'Array tag/keyword seperti [Dashboard, Finance, Web App]' },
   figma_link: { type: DataTypes.STRING(255) },
   sort_order: { type: DataTypes.INTEGER, defaultValue: 0 },
 }, {

@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import Logo from './Logo';
+import LanguageToggle from './LanguageToggle';
 
 const NAV_LINKS = [
   { label: 'Beranda', path: '/' },
@@ -68,7 +69,8 @@ export default function Navbar() {
         </nav>
 
         {/* Right side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <LanguageToggle />
           <ThemeToggle />
           {/* Hamburger — mobile only */}
           <button

@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ITBackground from './components/ITBackground';
 import AdminPIN from './pages/AdminPIN';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -118,7 +119,8 @@ function Layout({ children }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
       <CustomCursor />
       <Suspense fallback={<PageLoader />}>
         <Routes>
@@ -149,6 +151,7 @@ export default function App() {
           } />
         </Routes>
       </Suspense>
-    </BrowserRouter>
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }

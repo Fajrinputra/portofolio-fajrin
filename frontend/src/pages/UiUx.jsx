@@ -76,6 +76,7 @@ export default function UiUx() {
                     category={design.category}
                     description={design.description}
                     thumbnail={design.thumbnail}
+                    tags={Array.isArray(design.tags) ? design.tags : (typeof design.tags === 'string' ? (() => { try { return JSON.parse(design.tags); } catch { return []; } })() : [])}
                     index={i}
                   />
                 </motion.div>

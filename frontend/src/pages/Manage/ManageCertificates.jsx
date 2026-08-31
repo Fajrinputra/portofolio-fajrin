@@ -4,9 +4,10 @@ import { getCertificates, createCertificate, updateCertificate, deleteCertificat
 const FIELDS = [
   { name: 'title', label: 'Judul Sertifikat', tableCol: true },
   { name: 'issuer', label: 'Penerbit', tableCol: true },
-  { name: 'issued_date', label: 'Tanggal', type: 'date' },
+  { name: 'category', label: 'Kategori', tableCol: true, placeholder: 'mis. Programming, Design, Data Science, Networking' },
+  { name: 'issued_date', label: 'Tanggal Terbit', type: 'date' },
   { name: 'sort_order', label: 'Urutan', type: 'number' },
-  { name: 'image_url', label: 'URL Gambar Sertifikat', full: true },
+  { name: 'image_url', label: 'Gambar Sertifikat', type: 'upload', fileType: 'image', full: true },
   { name: 'credential_url', label: 'URL Verifikasi (opsional)', full: true },
 ];
 

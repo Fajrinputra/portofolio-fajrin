@@ -284,43 +284,48 @@ export default function Profil() {
         </section>
       )}
 
-      {/* Skills Section */}
+      {/* Skills Section — Grid kartu per kategori */}
       <section className="section-py">
         <div className="container-custom">
           <SectionHeading label="Kemampuan" title="Skill & Teknologi" />
 
           {skillCategories.length > 0 ? (
-            <>
-              {/* Tab navigation */}
-              <div className="flex flex-wrap gap-2 mt-8 mb-8">
-                {skillCategories.map((cat, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveTab(i)}
-                    className={`px-4 py-2 rounded-btn text-sm font-medium transition-all duration-200 ${
-                      activeTab === i
-                        ? 'bg-accent text-white'
-                        : 'bg-bg-secondary border border-border-color text-text-secondary hover:border-accent hover:text-accent'
-                    }`}
-                  >
-                    {cat.category}
-                  </button>
-                ))}
-              </div>
-
-              {/* Skills grid */}
-              <motion.div
-                key={activeTab}
-                className="flex flex-wrap gap-3"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.25 }}
-              >
-                {(skillCategories[activeTab]?.items || []).map(skill => (
-                  <SkillBadge key={skill} skill={skill} size="lg" />
-                ))}
-              </motion.div>
-            </>
+            <motion.div
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              {skillCategories.map((cat, i) => (
+                <motion.div
+                  key={i}
+                  className="glass-card p-5 card-hover"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                >
+                  {/* Header kategori */}
+                  <div className="flex items-center gap-2.5 mb-4">
+                    <span className="text-xl">{cat.icon || '📦'}</span>
+                    <h3 className="font-display font-semibold text-text-primary text-base">
+                      {cat.category}
+                    </h3>
+                  </div>
+                  {/* Skill pills */}
+                  <div className="flex flex-wrap gap-2">
+                    {(cat.items || []).map(skill => (
+                      <span
+                        key={skill}
+                        className="px-3 py-1 text-xs font-medium rounded-full border border-border-color text-text-secondary bg-bg-secondary hover:border-accent/50 hover:text-accent transition-colors duration-150"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           ) : (
             <p className="text-text-secondary mt-6">Belum ada data skill. Isi di <a href="/manage" className="text-accent">/manage</a></p>
           )}

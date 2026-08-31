@@ -91,11 +91,14 @@ export default function Card({
           </p>
         )}
 
-        {/* Tags */}
+        {/* Tags — pill besar seperti referensi */}
         {safeTags.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mt-3">
-            {safeTags.slice(0, 4).map(tag => (
-              <span key={tag} className="text-xs px-2 py-0.5 rounded bg-accent/10 text-accent border border-accent/20">
+          <div className="flex flex-wrap gap-2 mt-4">
+            {safeTags.map(tag => (
+              <span
+                key={tag}
+                className="text-xs font-semibold px-3 py-1 rounded-full bg-accent/15 text-accent border border-accent/30 tracking-wide"
+              >
                 {tag}
               </span>
             ))}
