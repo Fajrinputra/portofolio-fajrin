@@ -12,25 +12,27 @@ exports.getProfile = async (req, res) => {
 };
 
 // PUT /api/profile — update data profil
-// TODO: protect this route with auth middleware
 exports.updateProfile = async (req, res) => {
   try {
     let profile = await Profile.findOne();
 
-    // Sanitasi: kolom goals bertipe TEXT, harus string
     const body = { ...req.body };
 
+    // ── Sanitasi goals → TEXT string
     if (body.goals !== undefined) {
-      if (typeof body.goals !== 'string') {
-        body.goals = JSON.stringify(body.goals);
-      }
-      // Validasi JSON valid (opsional, untuk keamanan)
-      try { JSON.parse(body.goals); } catch {
-        body.goals = '[]';
-      }
+      if (typeof body.goals !== 'string') body.goals = JSON.stringify(body.goals);
+      try { JSON.parse(body.goals); } catch { body.goals = '[]'; }
     }
 
-    // Sanitasi: personal_photos bertipe JSON — pastikan array
+    // ── Sanitasi skills → JSON array
+    if (body.skills !== undefined) {
+      if (typeof body.skills === 'string') {
+        try { body.skills = JSON.parse(body.skills); } catch { body.skills = []; }
+      }
+      if (!Array.isArray(body.skills)) body.skills = [];
+    }
+
+    // ── Sanitasi personal_photos → JSON array
     if (body.personal_photos !== undefined) {
       if (typeof body.personal_photos === 'string') {
         try { body.personal_photos = JSON.parse(body.personal_photos); } catch { body.personal_photos = []; }
@@ -43,7 +45,10 @@ exports.updateProfile = async (req, res) => {
     } else {
       await profile.update(body);
     }
-    res.json(profile);
+
+    // Re-fetch untuk memastikan data JSON sudah di-parse Sequelize dengan benar
+    const updated = await Profile.findOne({ where: { id: profile.id } });
+    res.json(updated);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

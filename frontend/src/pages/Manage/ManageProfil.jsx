@@ -19,12 +19,28 @@ export default function ManageProfil() {
   useEffect(() => {
     getProfile().then(data => {
       if (data) {
+        // Parse personal_photos — bisa berupa string JSON atau sudah array
+        let personal_photos = [];
+        if (Array.isArray(data.personal_photos)) {
+          personal_photos = data.personal_photos;
+        } else if (typeof data.personal_photos === 'string' && data.personal_photos) {
+          try { personal_photos = JSON.parse(data.personal_photos); } catch { personal_photos = []; }
+        }
+
+        // Parse skills — bisa berupa string JSON atau sudah array
+        let skills = [];
+        if (Array.isArray(data.skills)) {
+          skills = data.skills;
+        } else if (typeof data.skills === 'string' && data.skills) {
+          try { skills = JSON.parse(data.skills); } catch { skills = []; }
+        }
+
         setForm({
           ...data,
           birth_date: data.birth_date || '',
           goals: typeof data.goals === 'string' ? data.goals : JSON.stringify(data.goals || [], null, 2),
-          skills: Array.isArray(data.skills) ? data.skills : [],
-          personal_photos: Array.isArray(data.personal_photos) ? data.personal_photos : [],
+          skills,
+          personal_photos,
         });
       }
     }).finally(() => setLoading(false));
@@ -46,22 +62,53 @@ export default function ManageProfil() {
     setSaving(true);
     setMsg('');
     try {
-      // goals HARUS string untuk kolom TEXT di database
-      // Pastikan valid JSON string, jika bukan JSON parse error → kirim apa adanya
+      // ── 1. Serialisasi goals → TEXT string
       let goalsStr = form.goals;
-      if (typeof goalsStr !== 'string') {
-        goalsStr = JSON.stringify(goalsStr);
-      }
-      // Validasi: coba parse untuk memastikan formatnya benar
-      try {
-        JSON.parse(goalsStr);
-      } catch {
-        // Jika tidak valid JSON, bungkus sebagai array kosong
+      if (typeof goalsStr !== 'string') goalsStr = JSON.stringify(goalsStr);
+      try { JSON.parse(goalsStr); } catch {
         goalsStr = '[]';
-        setMsg('⚠️ Format Goals tidak valid, dikosongkan. Gunakan format JSON array.');
+        setMsg('⚠️ Format Goals tidak valid, dikosongkan.');
       }
 
-      await updateProfile({ ...form, goals: goalsStr });
+      // ── 2. Pastikan skills adalah array yang valid
+      const skillsArr = Array.isArray(form.skills) ? form.skills : [];
+
+      // ── 3. Pastikan personal_photos adalah array yang valid
+      const photosArr = Array.isArray(form.personal_photos) ? form.personal_photos : [];
+
+      // ── 4. Kirim ke API — Axios otomatis serialize JS objects ke JSON
+      const payload = {
+        ...form,
+        goals: goalsStr,
+        skills: skillsArr,
+        personal_photos: photosArr,
+      };
+
+      const saved = await updateProfile(payload);
+
+      // ── 5. Update state dari response API agar konsisten dengan DB
+      if (saved) {
+        let parsedPhotos = [];
+        if (Array.isArray(saved.personal_photos)) parsedPhotos = saved.personal_photos;
+        else if (typeof saved.personal_photos === 'string' && saved.personal_photos) {
+          try { parsedPhotos = JSON.parse(saved.personal_photos); } catch { parsedPhotos = []; }
+        }
+
+        let parsedSkills = [];
+        if (Array.isArray(saved.skills)) parsedSkills = saved.skills;
+        else if (typeof saved.skills === 'string' && saved.skills) {
+          try { parsedSkills = JSON.parse(saved.skills); } catch { parsedSkills = []; }
+        }
+
+        setForm(prev => ({
+          ...prev,
+          ...saved,
+          goals: goalsStr,
+          skills: parsedSkills,
+          personal_photos: parsedPhotos,
+        }));
+      }
+
       setMsg('✅ Profil berhasil disimpan!');
     } catch (err) {
       setMsg(`❌ Error: ${err.response?.data?.message || err.message}`);
@@ -157,6 +204,13 @@ export default function ManageProfil() {
         <div className="mb-5">
           <h2 className="text-base font-semibold">Foto Pribadi</h2>
           <p className="text-xs text-gray-500 mt-1">Foto-foto ini akan tampil di halaman Profil sebagai galeri tambahan.</p>
+          {/* Reminder penting */}
+          <div className="mt-2 flex items-start gap-2 bg-amber-500/10 border border-amber-500/30 rounded-lg px-3 py-2">
+            <span className="text-amber-400 text-xs mt-0.5">⚠️</span>
+            <p className="text-xs text-amber-300">
+              Setelah upload foto, <strong>klik "Simpan Profil"</strong> di bawah agar foto tersimpan ke database dan muncul di halaman Profil.
+            </p>
+          </div>
         </div>
         {/* Upload banyak foto sekaligus */}
         <FileUpload
