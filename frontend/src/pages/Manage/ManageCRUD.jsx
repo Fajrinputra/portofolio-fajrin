@@ -111,7 +111,7 @@ function FormField({ field, value, onChange }) {
   );
 }
 
-export function ManageCRUD({ title, fields, getAll, create, update, remove, getItemTitle }) {
+export function ManageCRUD({ title, titleColLabel, fields, getAll, create, update, remove, getItemTitle }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -245,12 +245,12 @@ export function ManageCRUD({ title, fields, getAll, create, update, remove, getI
             <table className="w-full text-sm">
               <thead className="border-b border-gray-800 bg-gray-800/50">
                 <tr>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-400">#</th>
-                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-400">Judul / Nama</th>
+                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-400 w-12">#</th>
+                  <th className="text-left px-4 py-3 text-xs font-medium text-gray-400">{titleColLabel || 'Judul / Nama'}</th>
                   {fields.filter(f => f.tableCol).map(f => (
                     <th key={f.name} className="text-left px-4 py-3 text-xs font-medium text-gray-400 hidden md:table-cell">{f.label}</th>
                   ))}
-                  <th className="text-right px-4 py-3 text-xs font-medium text-gray-400">Aksi</th>
+                  <th className="text-right px-4 py-3 text-xs font-medium text-gray-400 w-24">Aksi</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-800">

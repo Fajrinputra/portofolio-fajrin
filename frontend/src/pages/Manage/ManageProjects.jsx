@@ -3,7 +3,7 @@ import { getProjects, createProject, updateProject, deleteProject } from '../../
 
 const FIELDS = [
   { name: 'slug', label: 'Slug (URL)', placeholder: 'nama-proyek', tableCol: true },
-  { name: 'title', label: 'Judul Proyek', tableCol: true },
+  { name: 'title', label: 'Judul Proyek' },
   { name: 'category', label: 'Kategori', type: 'select', options: ['Web Development', 'Enterprise/ERP', 'Lainnya'], tableCol: true },
   { name: 'tagline', label: 'Tagline', full: true },
   { name: 'thumbnail', label: 'Thumbnail Proyek', type: 'upload', fileType: 'image', full: true },
@@ -22,6 +22,7 @@ export default function ManageProjects() {
   return (
     <ManageCRUD
       title="Proyek Pengembangan"
+      titleColLabel="Judul Proyek"
       fields={FIELDS}
       getAll={getProjects}
       create={createProject}

@@ -2,7 +2,7 @@ import { ManageCRUD } from './ManageCRUD';
 import { getCertificates, createCertificate, updateCertificate, deleteCertificate } from '../../services/api';
 
 const FIELDS = [
-  { name: 'title', label: 'Judul Sertifikat', tableCol: true },
+  { name: 'title', label: 'Judul Sertifikat' },
   { name: 'issuer', label: 'Penerbit', tableCol: true },
   { name: 'category', label: 'Kategori', tableCol: true, placeholder: 'mis. Programming, Design, Data Science, Networking' },
   { name: 'issued_date', label: 'Tanggal Terbit', type: 'date' },
@@ -15,6 +15,7 @@ export default function ManageCertificates() {
   return (
     <ManageCRUD
       title="Sertifikat & Pencapaian"
+      titleColLabel="Judul Sertifikat"
       fields={FIELDS}
       getAll={getCertificates}
       create={createCertificate}

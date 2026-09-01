@@ -2,7 +2,7 @@ import { ManageCRUD } from './ManageCRUD';
 import { getPhotos, createPhoto, updatePhoto, deletePhoto } from '../../services/api';
 
 const FIELDS = [
-  { name: 'title', label: 'Judul Foto', tableCol: true },
+  { name: 'title', label: 'Judul Foto' },
   { name: 'category', label: 'Kategori', placeholder: 'Wedding', tableCol: true },
   { name: 'image_url', label: 'File Foto', type: 'upload', fileType: 'image', full: true },
   { name: 'sort_order', label: 'Urutan', type: 'number' },
@@ -12,6 +12,7 @@ export default function ManagePhotos() {
   return (
     <ManageCRUD
       title="Foto Freelance"
+      titleColLabel="Judul Foto"
       fields={FIELDS}
       getAll={getPhotos}
       create={createPhoto}

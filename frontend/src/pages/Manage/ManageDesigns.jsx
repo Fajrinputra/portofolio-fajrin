@@ -3,7 +3,7 @@ import { getDesigns, createDesign, updateDesign, deleteDesign } from '../../serv
 
 const FIELDS = [
   { name: 'slug', label: 'Slug (URL)', placeholder: 'nama-design', tableCol: true },
-  { name: 'title', label: 'Judul Design', tableCol: true },
+  { name: 'title', label: 'Judul Design' },
   { name: 'category', label: 'Kategori', placeholder: 'Mobile App', tableCol: true },
   { name: 'thumbnail', label: 'Thumbnail', type: 'upload', fileType: 'image', full: true },
   { name: 'figma_link', label: 'Link Figma', full: true },
@@ -17,6 +17,7 @@ export default function ManageDesigns() {
   return (
     <ManageCRUD
       title="Design UI/UX"
+      titleColLabel="Judul Design"
       fields={FIELDS}
       getAll={getDesigns}
       create={createDesign}
