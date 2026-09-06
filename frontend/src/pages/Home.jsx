@@ -52,7 +52,7 @@ function HeroSection({ profile }) {
             className="text-xl md:text-2xl text-text-secondary font-body mb-6 leading-relaxed"
             style={{ textAlign: 'left' }}
           >
-            {profile?.tagline || 'Fresh Graduate Sistem Informasi · Developer & Designer'}
+            {profile?.tagline || 'Fresh Graduate Sistem Informasi · Beginner Developer & Designer'}
           </motion.p>
 
           <motion.p

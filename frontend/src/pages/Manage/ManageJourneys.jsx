@@ -2,7 +2,7 @@ import { ManageCRUD } from './ManageCRUD';
 import { getJourneys, createJourney, updateJourney, deleteJourney } from '../../services/api';
 
 const FIELDS = [
-  { name: 'level', label: 'Level', type: 'select', options: ['SD', 'SMP', 'SMA', 'Kuliah'], tableCol: true },
+  { name: 'level', label: 'Level', type: 'select', options: ['SD', 'SMP', 'SMA', 'Perguruan Tinggi'], tableCol: true },
   { name: 'institution_name', label: 'Nama Institusi', tableCol: true },
   { name: 'period', label: 'Periode', placeholder: '2010 - 2016' },
   { name: 'sort_order', label: 'Urutan', type: 'number' },
