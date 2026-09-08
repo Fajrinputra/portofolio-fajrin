@@ -1,6 +1,6 @@
 /**
  * Generic CRUD Manage Component Factory
- * Digunakan oleh ManageJourneys, ManageOrganizations, ManagePhotos, ManageCertificates
+ * Digunakan oleh ManageJourneys, ManageOrganizations, ManageCertificates, ManageProjects, ManageDesigns
  */
 import { useState, useEffect } from 'react';
 import { Plus, Pencil, Trash2, Save, X, ChevronDown, ChevronUp } from 'lucide-react';
@@ -68,7 +68,12 @@ function FormField({ field, value, onChange }) {
   }
   // type='gallery' — multiple image upload
   if (type === 'gallery') {
-    const currentUrls = Array.isArray(value) ? value : (typeof value === 'string' && value ? [value] : []);
+    let currentUrls = [];
+    if (Array.isArray(value)) currentUrls = value;
+    else if (typeof value === 'string' && value) {
+      try { const parsed = JSON.parse(value); currentUrls = Array.isArray(parsed) ? parsed : [value]; }
+      catch { currentUrls = [value]; }
+    }
     return (
       <div>
         <FileUpload
@@ -141,9 +146,21 @@ export function ManageCRUD({ title, titleColLabel, fields, getAll, create, updat
     const f = {};
     fields.forEach(field => {
       const v = item[field.name];
-      f[field.name] = field.type === 'json'
-        ? (Array.isArray(v) ? v.join(', ') : (typeof v === 'string' ? v : JSON.stringify(v || [])))
-        : (v || '');
+      if (field.type === 'json') {
+        // Konversi array → string koma untuk input teks
+        let arr = v;
+        if (typeof v === 'string') { try { arr = JSON.parse(v); } catch { arr = []; } }
+        f[field.name] = Array.isArray(arr) ? arr.join(', ') : (typeof v === 'string' ? v : '');
+      } else if (field.type === 'gallery') {
+        // Simpan sebagai array (sudah di-handle oleh FormField gallery)
+        let arr = v;
+        if (typeof v === 'string') { try { arr = JSON.parse(v); } catch { arr = []; } }
+        f[field.name] = Array.isArray(arr) ? arr : [];
+      } else if (field.type === 'upload') {
+        f[field.name] = v || '';
+      } else {
+        f[field.name] = v || '';
+      }
     });
     setForm(f);
     setShowForm(true);
@@ -158,9 +175,14 @@ export function ManageCRUD({ title, titleColLabel, fields, getAll, create, updat
     try {
       const payload = {};
       fields.forEach(f => {
-        payload[f.name] = f.type === 'json'
-          ? form[f.name].split(',').map(x => x.trim()).filter(Boolean)
-          : form[f.name];
+        if (f.type === 'json') {
+          payload[f.name] = form[f.name].split(',').map(x => x.trim()).filter(Boolean);
+        } else if (f.type === 'gallery') {
+          // gallery sudah berupa array dari FormField
+          payload[f.name] = Array.isArray(form[f.name]) ? form[f.name] : [];
+        } else {
+          payload[f.name] = form[f.name];
+        }
       });
 
       if (editItem) {

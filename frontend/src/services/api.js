@@ -44,14 +44,7 @@ export const createDesign = (data) => api.post('/designs', data).then(r => r.dat
 export const updateDesign = (id, data) => api.put(`/designs/${id}`, data).then(r => r.data);
 export const deleteDesign = (id) => api.delete(`/designs/${id}`).then(r => r.data);
 
-// --- Photos ---
-export const getPhotos = (category) => {
-  const params = category && category !== 'Semua' ? { category } : {};
-  return api.get('/photos', { params }).then(r => r.data);
-};
-export const createPhoto = (data) => api.post('/photos', data).then(r => r.data);
-export const updatePhoto = (id, data) => api.put(`/photos/${id}`, data).then(r => r.data);
-export const deletePhoto = (id) => api.delete(`/photos/${id}`).then(r => r.data);
+
 
 // --- Certificates ---
 export const getCertificates = () => api.get('/certificates').then(r => r.data);

@@ -28,11 +28,11 @@ export default function Logo({ size = 36, className = '' }) {
         />
       </g>
 
-      <defs>
+    <defs>
         <linearGradient id="jejeGradBg" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#7C3AED" />
-          <stop offset="50%" stopColor="#6C5CE7" />
-          <stop offset="100%" stopColor="#4C1D95" />
+          <stop offset="0%" stopColor="#F59E0B" />
+          <stop offset="50%" stopColor="#F97316" />
+          <stop offset="100%" stopColor="#EC4899" />
         </linearGradient>
       </defs>
     </svg>

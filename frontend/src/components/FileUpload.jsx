@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { Upload, X, FileText, Image, Check, Loader } from 'lucide-react';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_URL || '';
 
 /**
  * FileUpload — komponen upload drag & drop
@@ -107,7 +107,7 @@ export default function FileUpload({
   };
 
   const isImage = type === 'image';
-  const showPreviewImg = preview && isImage && value && value.startsWith('http');
+  const showPreviewImg = preview && isImage && value;
 
   return (
     <div className={`space-y-2 ${className}`}>
@@ -189,17 +189,7 @@ export default function FileUpload({
         )}
       </div>
 
-      {/* Manual URL input sebagai alternatif */}
-      <div className="flex items-center gap-2 mt-1">
-        <span className="text-xs text-text-secondary">atau masukkan URL manual:</span>
-      </div>
-      <input
-        type="url"
-        value={value}
-        onChange={e => onChange?.(e.target.value)}
-        placeholder={isImage ? 'https://...' : 'https://.../file.pdf'}
-        className="form-input text-sm"
-      />
+
 
       {error && (
         <p className="text-xs text-red-400 flex items-center gap-1">

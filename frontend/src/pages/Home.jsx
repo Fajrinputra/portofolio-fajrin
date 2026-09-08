@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Code2, Palette, Camera, ChevronRight } from 'lucide-react';
-import { getProfile, getProjects, getPhotos } from '../services/api';
+import { getProfile, getProjects } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Button from '../components/Button';
 import Card from '../components/Card';
@@ -183,12 +183,12 @@ export default function Home() {
   const { t } = useLanguage();
   const [profile, setProfile] = useState(null);
   const [projects, setProjects] = useState([]);
-  const [photos, setPhotos] = useState([]);
+
 
   useEffect(() => {
     getProfile().then(setProfile).catch(() => {});
     getProjects().then(data => setProjects(data.slice(0, 3))).catch(() => {});
-    getPhotos().then(data => setPhotos(data.slice(0, 6))).catch(() => {});
+
   }, []);
 
   const stats = [
@@ -283,39 +283,7 @@ export default function Home() {
             )}
           </PreviewSection>
 
-          {/* Photo preview */}
-          <PreviewSection
-            title={t('home_photo_title')}
-            label={t('home_photo_label')}
-            icon={Camera}
-            href="/foto"
-            seeAllText={t('home_see_all')}
-          >
-            {photos.length > 0 ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-                {photos.map((photo, i) => (
-                  <motion.div
-                    key={photo.id}
-                    className="aspect-square rounded-card overflow-hidden"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.06 }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <img
-                      src={photo.image_url}
-                      alt={photo.title || 'Foto freelance'}
-                      loading="lazy"
-                      className="w-full h-full object-cover"
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-text-secondary text-sm">{t('home_no_photo')} {t('add_to_manage')} <a href="/manage" className="text-accent">/manage</a></p>
-            )}
-          </PreviewSection>
+
         </div>
       </section>
 

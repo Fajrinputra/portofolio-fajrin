@@ -17,7 +17,7 @@ const Proyek = lazy(() => import('./pages/Proyek'));
 const ProyekDetail = lazy(() => import('./pages/ProyekDetail'));
 const UiUx = lazy(() => import('./pages/UiUx'));
 const UiUxDetail = lazy(() => import('./pages/UiUxDetail'));
-const Foto = lazy(() => import('./pages/Foto'));
+
 const Sertifikat = lazy(() => import('./pages/Sertifikat'));
 const Kontak = lazy(() => import('./pages/Kontak'));
 const ManageLayout = lazy(() => import('./pages/Manage/ManageLayout'));
@@ -134,7 +134,7 @@ export default function App() {
           <Route path="/proyek/:slug" element={<Layout><ProyekDetail /></Layout>} />
           <Route path="/uiux" element={<Layout><UiUx /></Layout>} />
           <Route path="/uiux/:slug" element={<Layout><UiUxDetail /></Layout>} />
-          <Route path="/foto" element={<Layout><Foto /></Layout>} />
+
           <Route path="/sertifikat" element={<Layout><Sertifikat /></Layout>} />
           <Route path="/kontak" element={<Layout><Kontak /></Layout>} />
           {/* Manage — PIN protected, no navbar */}

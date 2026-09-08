@@ -6,7 +6,6 @@ const FIELDS = [
   { name: 'title', label: 'Judul Proyek' },
   { name: 'category', label: 'Kategori', type: 'select', options: ['Web Development', 'Enterprise/ERP', 'Lainnya'], tableCol: true },
   { name: 'tagline', label: 'Tagline', full: true },
-  { name: 'thumbnail', label: 'Thumbnail Proyek', type: 'upload', fileType: 'image', full: true },
   { name: 'role', label: 'Role / Posisi', full: true },
   { name: 'tech_stack', label: 'Tech Stack (pisah koma)', type: 'json', full: true, placeholder: 'React.js, Laravel, MySQL' },
   { name: 'background', label: 'Latar Belakang', type: 'textarea', rows: 4, full: true },
@@ -14,6 +13,7 @@ const FIELDS = [
   { name: 'challenges', label: 'Tantangan (pisah koma)', type: 'json', full: true },
   { name: 'features', label: 'Fitur Utama (pisah koma)', type: 'json', full: true },
   { name: 'impact', label: 'Hasil & Dampak', type: 'textarea', full: true },
+  { name: 'gallery', label: 'Foto Dokumentasi / Pelaksanaan Proyek', type: 'gallery', full: true },
   { name: 'demo_link', label: 'Link Demo (opsional)' },
   { name: 'repo_link', label: 'Link Repository (opsional)' },
 ];

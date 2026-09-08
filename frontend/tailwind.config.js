@@ -34,9 +34,9 @@ export default {
       },
       boxShadow: {
         'card': '0 4px 24px rgba(0,0,0,0.25)',
-        'card-hover': '0 8px 40px rgba(108,92,231,0.25)',
-        'glow': '0 0 20px rgba(108,92,231,0.4)',
-        'glow-teal': '0 0 20px rgba(0,217,192,0.4)',
+        'card-hover': '0 8px 40px rgba(245,158,11,0.22)',
+        'glow': '0 0 20px rgba(245,158,11,0.45)',
+        'glow-teal': '0 0 20px rgba(236,72,153,0.4)',
       },
       animation: {
         'marquee': 'marquee 25s linear infinite',

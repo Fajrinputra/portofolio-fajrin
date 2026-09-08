@@ -7,17 +7,17 @@
    ============================================= */
 :root {
   /* Dark mode (default) */
-  --color-bg-primary: #0F1115;
-  --color-bg-secondary: #171A21;
+  --color-bg-primary: #0C0E12;
+  --color-bg-secondary: #161921;
   --color-text-primary: #F5F5F7;
   --color-text-secondary: #A1A1AA;
-  --color-accent: #6C5CE7;
-  --color-accent-secondary: #00D9C0;
-  --color-border: #2A2D36;
+  --color-accent: #F59E0B;
+  --color-accent-secondary: #EC4899;
+  --color-border: #252830;
 
   /* Gradients */
-  --gradient-accent: linear-gradient(135deg, #6C5CE7 0%, #00D9C0 100%);
-  --gradient-card: linear-gradient(135deg, rgba(108,92,231,0.1) 0%, rgba(0,217,192,0.05) 100%);
+  --gradient-accent: linear-gradient(135deg, #F59E0B 0%, #EC4899 100%);
+  --gradient-card: linear-gradient(135deg, rgba(245,158,11,0.08) 0%, rgba(236,72,153,0.05) 100%);
 
   /* Section spacing */
   --section-py: 96px;
@@ -29,8 +29,8 @@
   --color-bg-secondary: #FFFFFF;
   --color-text-primary: #111111;
   --color-text-secondary: #52525B;
-  --color-accent: #5B4BD6;
-  --color-accent-secondary: #00B8A3;
+  --color-accent: #D97706;
+  --color-accent-secondary: #DB2777;
   --color-border: #E4E4E7;
 }
 
@@ -237,8 +237,8 @@ a {
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 40px rgba(108, 92, 231, 0.2);
-  border-color: rgba(108, 92, 231, 0.4);
+  box-shadow: 0 8px 40px rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.4);
 }
 
 /* =============================================
@@ -296,7 +296,7 @@ a {
 
 .form-input:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.15);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
 }
 
 .form-input::placeholder {
@@ -341,7 +341,7 @@ a {
    SELECTION
    ============================================= */
 ::selection {
-  background: rgba(108, 92, 231, 0.35);
+  background: rgba(245, 158, 11, 0.35);
   color: var(--color-text-primary);
 }
 
@@ -349,7 +349,7 @@ a {
    SHADOW GLOW (Navbar active filter)
    ============================================= */
 .shadow-glow {
-  box-shadow: 0 0 16px rgba(108, 92, 231, 0.4);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.4);
 }
 
 /* =============================================
@@ -371,9 +371,9 @@ a {
 /* =============================================
    ACCENT OPACITY BACKGROUNDS
    ============================================= */
-.bg-accent\/8  { background-color: rgba(108, 92, 231, 0.08); }
-.bg-accent\/10 { background-color: rgba(108, 92, 231, 0.10); }
-.bg-accent\/20 { background-color: rgba(108, 92, 231, 0.20); }
+.bg-accent\/8  { background-color: rgba(245, 158, 11, 0.08); }
+.bg-accent\/10 { background-color: rgba(245, 158, 11, 0.10); }
+.bg-accent\/20 { background-color: rgba(245, 158, 11, 0.20); }
 
 /* =============================================
    RESPONSIVE — Container horizontal padding

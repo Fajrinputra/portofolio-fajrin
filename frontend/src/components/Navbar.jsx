@@ -19,7 +19,7 @@ export default function Navbar() {
     { label: t('nav_org'), path: '/organisasi' },
     { label: t('nav_project'), path: '/proyek' },
     { label: t('nav_uiux'), path: '/uiux' },
-    { label: t('nav_photo'), path: '/foto' },
+
     { label: t('nav_certificate'), path: '/sertifikat' },
     { label: t('nav_contact'), path: '/kontak' },
   ];

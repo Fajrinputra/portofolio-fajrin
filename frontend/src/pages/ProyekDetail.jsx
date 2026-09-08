@@ -46,10 +46,18 @@ export default function ProyekDetail() {
     );
   }
 
-  const gallery = Array.isArray(project.gallery) ? project.gallery : [];
-  const techStack = Array.isArray(project.tech_stack) ? project.tech_stack : [];
-  const challenges = Array.isArray(project.challenges) ? project.challenges : [];
-  const features = Array.isArray(project.features) ? project.features : [];
+  const parseJsonField = (val) => {
+    if (Array.isArray(val)) return val;
+    if (typeof val === 'string' && val) {
+      try { const p = JSON.parse(val); return Array.isArray(p) ? p : []; } catch { return []; }
+    }
+    return [];
+  };
+
+  const gallery = parseJsonField(project.gallery);
+  const techStack = parseJsonField(project.tech_stack);
+  const challenges = parseJsonField(project.challenges);
+  const features = parseJsonField(project.features);
 
   // Next project navigation
   const currentIdx = allProjects.findIndex(p => p.slug === slug);
@@ -70,16 +78,6 @@ export default function ProyekDetail() {
         </div>
       </div>
 
-      {/* Cover */}
-      {project.thumbnail && (
-        <div className="w-full aspect-video max-h-[500px] overflow-hidden">
-          <img
-            src={project.thumbnail}
-            alt={`Cover proyek ${project.title}`}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      )}
 
       <div className="container-custom py-12 md:py-16">
         <div className="grid lg:grid-cols-3 gap-12">
@@ -190,9 +188,9 @@ export default function ProyekDetail() {
           </div>
 
           {/* Sidebar */}
-          <aside className="space-y-6">
+          <aside className="space-y-6 self-start sticky top-24">
             {/* Project Info */}
-            <motion.div className="glass-card p-6 sticky top-24" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
+            <motion.div className="glass-card p-6" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
               <h3 className="font-display font-semibold text-text-primary mb-5">Info Proyek</h3>
 
               {project.role && (

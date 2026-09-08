@@ -8,7 +8,6 @@ require('./models/Journey');
 require('./models/Organization');
 require('./models/Project');
 require('./models/Design');
-require('./models/Photo');
 require('./models/Certificate');
 require('./models/Message');
 

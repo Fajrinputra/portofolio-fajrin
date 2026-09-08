@@ -9,10 +9,10 @@ const levelIcons = {
 };
 
 const levelColors = {
-  'SD': '#6C5CE7',
-  'SMP': '#00D9C0',
-  'SMA': '#6C5CE7',
-  'Kuliah': '#00D9C0',
+  'SD': '#F59E0B',
+  'SMP': '#EC4899',
+  'SMA': '#F59E0B',
+  'Kuliah': '#EC4899',
 };
 
 // Split achievement string menjadi array baris (pisah by \n atau ;)
@@ -34,7 +34,7 @@ export default function Timeline({ items = [] }) {
         {items.map((item, index) => {
           const isEven = index % 2 === 0;
           const Icon = levelIcons[item.level] || BookOpen;
-          const color = levelColors[item.level] || '#6C5CE7';
+          const color = levelColors[item.level] || '#F59E0B';
           const achievements = parseAchievements(item.achievement);
 
           return (
@@ -50,7 +50,7 @@ export default function Timeline({ items = [] }) {
               <div className={`w-full md:w-5/12 ${isEven ? 'md:pr-10 md:text-right' : 'md:pl-10'}`}>
                 <motion.div
                   className="glass-card p-6 card-hover"
-                  whileHover={{ y: -4, boxShadow: '0 8px 40px rgba(108,92,231,0.2)' }}
+                  whileHover={{ y: -4, boxShadow: '0 8px 40px rgba(245,158,11,0.18)' }}
                 >
                   <span className="section-label" style={{ color }}>
                     {item.level}
@@ -76,7 +76,7 @@ export default function Timeline({ items = [] }) {
                             className="flex-shrink-0 mt-0.5"
                             style={{ color: '#F59E0B' }}
                           />
-                          <span className="text-sm font-medium leading-snug" style={{ color: '#00D9C0' }}>
+                          <span className="text-sm font-medium leading-snug" style={{ color: '#EC4899' }}>
                             {ach}
                           </span>
                         </div>

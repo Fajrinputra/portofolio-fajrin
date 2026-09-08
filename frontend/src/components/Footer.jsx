@@ -16,7 +16,7 @@ const footerLinks = [
     links: [
       { label: 'Proyek', path: '/proyek' },
       { label: 'Design UI/UX', path: '/uiux' },
-      { label: 'Foto Freelance', path: '/foto' },
+
       { label: 'Sertifikat', path: '/sertifikat' },
     ],
   },

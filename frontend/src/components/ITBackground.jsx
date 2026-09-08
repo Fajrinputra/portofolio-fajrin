@@ -24,8 +24,8 @@ export default function ITBackground() {
     window.addEventListener('resize', resize);
 
     // --- Config ---
-    const ACCENT = '108, 92, 231';      // #6C5CE7
-    const TEAL   = '0, 217, 192';       // #00D9C0
+    const ACCENT = '245, 158, 11';      // #F59E0B (Amber/Gold)
+    const TEAL   = '236, 72, 153';       // #EC4899 (Magenta/Pink)
 
     // --- Nodes (circuit board nodes) ---
     const NODE_COUNT = Math.min(40, Math.floor((W * H) / 28000));

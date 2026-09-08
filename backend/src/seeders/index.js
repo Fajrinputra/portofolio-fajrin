@@ -5,7 +5,7 @@ const Journey = require('../models/Journey');
 const Organization = require('../models/Organization');
 const Project = require('../models/Project');
 const Design = require('../models/Design');
-const Photo = require('../models/Photo');
+
 const Certificate = require('../models/Certificate');
 
 async function seedAll() {
@@ -97,21 +97,7 @@ async function seedAll() {
       console.log('⏭️  Designs sudah ada, skip');
     }
 
-    // --- Photos ---
-    const photoCount = await Photo.count();
-    if (photoCount === 0) {
-      await Photo.bulkCreate([
-        { title: '[Foto Placeholder 1]', category: 'Wedding', image_url: 'https://picsum.photos/seed/wedding1/800/600', description: 'Foto wedding profesional.', client_name: '[Nama Klien]', sort_order: 1 },
-        { title: '[Foto Placeholder 2]', category: 'Event', image_url: 'https://picsum.photos/seed/event1/800/600', description: 'Dokumentasi event.', client_name: '[Nama Klien]', sort_order: 2 },
-        { title: '[Foto Placeholder 3]', category: 'Product', image_url: 'https://picsum.photos/seed/product1/800/600', description: 'Foto produk.', client_name: '[Nama Klien]', sort_order: 3 },
-        { title: '[Foto Placeholder 4]', category: 'Portrait', image_url: 'https://picsum.photos/seed/portrait1/800/600', description: 'Foto portrait.', client_name: '[Nama Klien]', sort_order: 4 },
-        { title: '[Foto Placeholder 5]', category: 'Wedding', image_url: 'https://picsum.photos/seed/wedding2/800/600', description: 'Foto wedding profesional.', client_name: '[Nama Klien]', sort_order: 5 },
-        { title: '[Foto Placeholder 6]', category: 'Event', image_url: 'https://picsum.photos/seed/event2/800/600', description: 'Dokumentasi event.', client_name: '[Nama Klien]', sort_order: 6 },
-      ]);
-      console.log('✅ Photos seeded');
-    } else {
-      console.log('⏭️  Photos sudah ada, skip');
-    }
+
 
     // --- Certificates ---
     const certCount = await Certificate.count();

@@ -22,7 +22,6 @@ app.use('/api/journeys', require('./routes/journeys.routes'));
 app.use('/api/organizations', require('./routes/organizations.routes'));
 app.use('/api/projects', require('./routes/projects.routes'));
 app.use('/api/designs', require('./routes/designs.routes'));
-app.use('/api/photos', require('./routes/photos.routes'));
 app.use('/api/certificates', require('./routes/certificates.routes'));
 app.use('/api/upload', require('./routes/upload.routes'));
 app.use('/api/messages', require('./routes/messages.routes'));

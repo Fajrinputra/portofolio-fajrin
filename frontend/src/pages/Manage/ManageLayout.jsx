@@ -1,5 +1,5 @@
 import { useState, useEffect, Suspense, lazy } from 'react';
-import { AlertTriangle, User, Map, Building2, Code2, Palette, Camera, Award, Inbox } from 'lucide-react';
+import { AlertTriangle, User, Map, Building2, Code2, Palette, Award, Inbox } from 'lucide-react';
 import api from '../../services/api';
 
 const ManageProfil = lazy(() => import('./ManageProfil'));
@@ -7,7 +7,7 @@ const ManageJourneys = lazy(() => import('./ManageJourneys'));
 const ManageOrganizations = lazy(() => import('./ManageOrganizations'));
 const ManageProjects = lazy(() => import('./ManageProjects'));
 const ManageDesigns = lazy(() => import('./ManageDesigns'));
-const ManagePhotos = lazy(() => import('./ManagePhotos'));
+
 const ManageCertificates = lazy(() => import('./ManageCertificates'));
 const ManageMessages = lazy(() => import('./ManageMessages'));
 
@@ -18,7 +18,7 @@ const TABS = [
   { key: 'organisasi', label: 'Organisasi', icon: Building2, component: ManageOrganizations },
   { key: 'proyek', label: 'Proyek', icon: Code2, component: ManageProjects },
   { key: 'uiux', label: 'UI/UX', icon: Palette, component: ManageDesigns },
-  { key: 'foto', label: 'Foto', icon: Camera, component: ManagePhotos },
+
   { key: 'sertifikat', label: 'Sertifikat', icon: Award, component: ManageCertificates },
 ];
 
