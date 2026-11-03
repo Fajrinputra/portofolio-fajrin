@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Building2, Calendar, Briefcase, Images, ArrowRight } from 'lucide-react';
 import { getOrganizations } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
@@ -20,6 +21,13 @@ export default function Organisasi() {
 
   return (
     <div className="bg-bg-primary section-py">
+      <Helmet>
+        <title>Organisasi | Fajrin Putra Pratama</title>
+        <meta
+          name="description"
+          content="Pengalaman organisasi, kepemimpinan, dan kontribusi Fajrin Putra Pratama dalam berbagai kegiatan kemahasiswaan dan laboratorium."
+        />
+      </Helmet>
       <div className="container-custom">
         <div className="max-w-2xl mb-14">
           <SectionHeading

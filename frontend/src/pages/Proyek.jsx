@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { getProjects } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/Card';
@@ -31,6 +32,13 @@ export default function Proyek() {
 
   return (
     <div className="bg-bg-primary section-py">
+      <Helmet>
+        <title>Proyek | Fajrin Putra Pratama</title>
+        <meta
+          name="description"
+          content="Kumpulan portofolio proyek software development, sistem informasi ERP, dan aplikasi web karya Fajrin Putra Pratama."
+        />
+      </Helmet>
       <div className="container-custom">
         <div className="max-w-2xl mb-10">
           <SectionHeading

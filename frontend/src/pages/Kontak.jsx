@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Mail, AtSign, Code2, MessageCircle, Camera, Download, Send } from 'lucide-react';
 import SectionHeading from '../components/SectionHeading';
 import Button from '../components/Button';
-import api from '../services/api';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const contactLinks = [
@@ -51,11 +51,27 @@ export default function Kontak() {
 
   const handleChange = (e) => setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
+  // Cara pakai Formspree: daftar di https://formspree.io, buat form baru,
+  // lalu isi VITE_FORMSPREE_ID di Vercel → Settings → Environment Variables
+  // Contoh: VITE_FORMSPREE_ID=xabcdefg
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const formspreeId = import.meta.env.VITE_FORMSPREE_ID;
     setStatus('sending');
     try {
-      await api.post('/messages', form);
+      if (formspreeId) {
+        const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ name: form.name, email: form.email, message: form.message }),
+        });
+        if (!res.ok) throw new Error('Formspree error');
+      } else {
+        const subject = encodeURIComponent(`[Portofolio] Pesan dari ${form.name}`);
+        const body = encodeURIComponent(`Nama: ${form.name}\nEmail: ${form.email}\n\nPesan:\n${form.message}`);
+        window.location.href = `mailto:fajrinputrapratama01@gmail.com?subject=${subject}&body=${body}`;
+      }
       setStatus('sent');
       setForm({ name: '', email: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
@@ -68,6 +84,13 @@ export default function Kontak() {
 
   return (
     <div className="bg-bg-primary section-py">
+      <Helmet>
+        <title>Kontak | Fajrin Putra Pratama</title>
+        <meta
+          name="description"
+          content="Hubungi Fajrin Putra Pratama melalui formulir pesan, email, WhatsApp, LinkedIn, atau GitHub untuk kolaborasi dan peluang kerja."
+        />
+      </Helmet>
       <div className="container-custom">
         <div className="max-w-2xl mb-14">
           <SectionHeading

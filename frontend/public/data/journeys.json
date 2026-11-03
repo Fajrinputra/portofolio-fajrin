@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "level": "SD",
+    "institution_name": "SD Negeri 112/I Perumnas",
+    "period": "2010 - 2016",
+    "description": "Membangun fondasi pendidikan dasar dengan semangat belajar yang tinggi.",
+    "achievement": "Juara umum lomba cerdas cermat (LCC) tingkat sekolah dasar",
+    "image_url": "",
+    "sort_order": 1
+  },
+  {
+    "id": 2,
+    "level": "SMP",
+    "institution_name": "SMP Negeri 3 Batang Hari",
+    "period": "2016 - 2019",
+    "description": "Mulai membangun relasi dengan aktif pada kegiatan sekolah maupun luar sekolah.",
+    "achievement": "Juara umum olimpiade matematika tingkat kabupaten\nPenggalang Garuda ",
+    "image_url": "",
+    "sort_order": 2
+  },
+  {
+    "id": 3,
+    "level": "SMA",
+    "institution_name": "SMA Negeri 1 Batang Hari",
+    "period": "2019 - 2022",
+    "description": "Mengembangkan minat di bidang teknologi informasi dan memperkuat kemauan terhadap dunia IT dan Bisnis untuk perencanaan kedepan nya.",
+    "achievement": "Anggota Sanggah Kerja Perkemahan Wirakarya Nasional 2021\nPengurus Kwartir Cabang (Kwarcab) Kabupaten Batanghari periode 2021 - 2022\nPengajar Pramuka pada sekolah tingkat menengah (SMP)\n",
+    "image_url": "",
+    "sort_order": 3
+  },
+  {
+    "id": 4,
+    "level": "Perguruan Tinggi",
+    "institution_name": "S1 Sistem Informasi, Universitas Andalas",
+    "period": "2022 - 2026",
+    "description": "Menempuh pendidikan sarjana Sistem Informasi dengan fokus pada pengembangan software, desain sistem, dan analisis data. Aktif dalam berbagai proyek dan organisasi kampus.",
+    "achievement": "Lulus dengan predikat Pujian, IPK 3.59, masa studi 3 tahun 11 bulan\nBintang Aktivis Fakultas",
+    "image_url": "",
+    "sort_order": 4
+  }
+]

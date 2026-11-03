@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ExternalLink, ChevronRight } from 'lucide-react';
 import { getDesignBySlug } from '../services/api';
 import Lightbox from '../components/Lightbox';
@@ -35,10 +36,19 @@ export default function UiUxDetail() {
     </div>
   );
 
-  const gallery = Array.isArray(design.gallery) ? design.gallery : [];
+  const gallery = (() => {
+    const g = design.gallery;
+    if (Array.isArray(g)) return g;
+    if (typeof g === 'string' && g) { try { const p = JSON.parse(g); return Array.isArray(p) ? p : []; } catch { return []; } }
+    return [];
+  })();
 
   return (
     <div className="bg-bg-primary">
+      <Helmet>
+        <title>{`${design.title} | Fajrin Putra Pratama`}</title>
+        <meta name="description" content={design.description?.slice(0, 150) || `Detail desain ${design.title}`} />
+      </Helmet>
       {/* Breadcrumb */}
       <div className="border-b border-border-color bg-bg-secondary">
         <div className="container-custom py-3">

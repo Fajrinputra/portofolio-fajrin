@@ -20,7 +20,9 @@ const UiUxDetail = lazy(() => import('./pages/UiUxDetail'));
 
 const Sertifikat = lazy(() => import('./pages/Sertifikat'));
 const Kontak = lazy(() => import('./pages/Kontak'));
-const ManageLayout = lazy(() => import('./pages/Manage/ManageLayout'));
+const ManageLayout = import.meta.env.DEV
+  ? lazy(() => import('./pages/Manage/ManageLayout'))
+  : null;
 
 // PIN-protected route wrapper untuk /manage
 function ProtectedManage() {
@@ -138,7 +140,9 @@ export default function App() {
           <Route path="/sertifikat" element={<Layout><Sertifikat /></Layout>} />
           <Route path="/kontak" element={<Layout><Kontak /></Layout>} />
           {/* Manage — PIN protected, no navbar */}
-          <Route path="/manage/*" element={<ProtectedManage />} />
+          {import.meta.env.DEV && ManageLayout && (
+            <Route path="/manage/*" element={<ProtectedManage />} />
+          )}
           {/* 404 */}
           <Route path="*" element={
             <Layout>

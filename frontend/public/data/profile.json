@@ -1,0 +1,49 @@
+{
+  "id": 1,
+  "full_name": "Fajrin Putra Pratama",
+  "nickname": "Fajrin",
+  "birth_place": "Batanghari, Jambi",
+  "birth_date": "2004-04-18",
+  "tagline": "Sistem Informasi · Software Developer & Designer",
+  "bio": "Fresh graduate Sistem Informasi Universitas Andalas, tertarik pada software development, UI/UX design, dan fotografi.\n\nSelama kuliah, saya banyak belajar lewat proyek nyata, mulai dari sistem ERP hingga aplikasi mobile. Saya memegang teguh nilai-nilai kejujuran, kedisiplinan, dan kerja keras, serta percaya komunikasi yang baik antar tim dan kepemimpinan adalah kunci mencapai target bersama. Bagi saya, mencoba hal baru dan menghadapi tantangan adalah cara terbaik untuk terus berkembang, baik dari sisi soft skill maupun hard skill.",
+  "goals": [
+    {
+      "title": "Inovasi",
+      "description": "Selalu mencari solusi kreatif dan inovatif untuk setiap tantangan teknologi."
+    },
+    {
+      "title": "Fleksibilitas Bisnis",
+      "description": "Membangun produk yang adaptif terhadap kebutuhan bisnis yang terus berkembang."
+    },
+    {
+      "title": "Kolaborasi",
+      "description": "Percaya bahwa kolaborasi tim yang solid menghasilkan karya terbaik."
+    }
+  ],
+  "photo_url": "/images/a9995fee-5ea3-4754-bb34-77fc151f24ca.jpg",
+  "cv_url": "/cv-fajrin-putra-pratama.pdf",
+  "skills": [
+    {
+      "category": "Keahlian",
+      "items": [
+        "UI/UX DESIGNER",
+        "QA (Quality Assurance) Engineer / Tester",
+        "Business Analyst (IT)",
+        "Software Developer",
+        "UX Researcher",
+        "Product Manager (PM)",
+        "UX Writer",
+        "System Analyst",
+        "ERP analyst",
+        "IT Support / Helpdesk",
+        "Data analyst",
+        "Text Writer"
+      ]
+    }
+  ],
+  "personal_photos": [
+    "/images/aa494dba-6ddb-4f70-9fbb-c1aaf1041178.jpg",
+    "/images/5d883a66-7275-499d-a5f5-e5b26ddd0615.jpg",
+    "/images/a30dc24f-0f03-48c5-8a8d-ee92ce81b8ee.jpg"
+  ]
+}

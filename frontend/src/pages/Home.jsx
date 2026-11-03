@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { ArrowRight, Download, Code2, Palette, Camera, ChevronRight } from 'lucide-react';
 import { getProfile, getProjects } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
@@ -200,6 +201,13 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <title>Fajrin Putra Pratama — Developer &amp; Designer</title>
+        <meta
+          name="description"
+          content="Portofolio resmi Fajrin Putra Pratama — Software Developer &amp; UI/UX Designer. Fresh graduate Sistem Informasi Universitas Andalas dengan keahlian software development dan desain antarmuka."
+        />
+      </Helmet>
       <HeroSection profile={profile} />
       <SkillsMarquee />
 

@@ -1,7 +1,12 @@
 import { useState, useRef } from 'react';
 import { Upload, X, FileText, Image, Check, Loader } from 'lucide-react';
 
-const API_BASE = import.meta.env.VITE_API_URL || '';
+const getUploadEndpoint = (type, multiple = false) => {
+  const envUrl = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
+  const base = envUrl.endsWith('/api') ? envUrl : `${envUrl}/api`;
+  if (multiple) return `${base}/upload/multiple`;
+  return `${base}/upload?type=${type}`;
+};
 
 /**
  * FileUpload — komponen upload drag & drop
@@ -48,38 +53,38 @@ export default function FileUpload({
         if (files.length > 1) {
           const formData = new FormData();
           Array.from(files).forEach(f => formData.append('files', f));
-          const res = await fetch(`${API_BASE}/api/upload/multiple`, {
+          const res = await fetch(getUploadEndpoint(type, true), {
             method: 'POST',
             body: formData,
           });
           const data = await res.json();
           if (!res.ok) throw new Error(data.error || 'Upload gagal');
-          const urls = data.files.map(f => `${API_BASE}${f.url}`);
+          const urls = data.files.map(f => f.url);
           onMultipleChange?.(urls);
           if (urls.length > 0) onChange?.(urls[0]);
         } else {
           const formData = new FormData();
           formData.append('file', files[0]);
-          const res = await fetch(`${API_BASE}/api/upload?type=${type}`, {
+          const res = await fetch(getUploadEndpoint(type, false), {
             method: 'POST',
             body: formData,
           });
           const data = await res.json();
           if (!res.ok) throw new Error(data.error || 'Upload gagal');
-          const singleUrl = `${API_BASE}${data.url}`;
+          const singleUrl = data.url;
           onMultipleChange?.([singleUrl]);
           onChange?.(singleUrl);
         }
       } else {
         const formData = new FormData();
         formData.append('file', files[0]);
-        const res = await fetch(`${API_BASE}/api/upload?type=${type}`, {
+        const res = await fetch(getUploadEndpoint(type, false), {
           method: 'POST',
           body: formData,
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error || 'Upload gagal');
-        onChange?.(`${API_BASE}${data.url}`);
+        onChange?.(data.url);
       }
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);

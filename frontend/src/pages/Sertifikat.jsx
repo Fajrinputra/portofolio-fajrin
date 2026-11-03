@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Award, Calendar, ExternalLink, Tag } from 'lucide-react';
 import { getCertificates } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
@@ -40,6 +41,13 @@ export default function Sertifikat() {
 
   return (
     <div className="bg-bg-primary section-py">
+      <Helmet>
+        <title>Sertifikat | Fajrin Putra Pratama</title>
+        <meta
+          name="description"
+          content="Koleksi sertifikasi dan penghargaan kompetensi profesional Fajrin Putra Pratama di bidang IT, database, software development, dan desain."
+        />
+      </Helmet>
       <div className="container-custom">
         <div className="max-w-2xl mb-10">
           <SectionHeading

@@ -19,8 +19,8 @@ async function startServer() {
     await sequelize.authenticate();
     console.log('✅ Koneksi database berhasil.');
 
-    // sync({ alter: true }) untuk development — update schema tanpa drop data
-    await sequelize.sync({ alter: true });
+    // sync() memastikan tabel ada tanpa menambah duplikasi index
+    await sequelize.sync();
     console.log('✅ Semua tabel tersinkronisasi.');
 
     app.listen(PORT, () => {

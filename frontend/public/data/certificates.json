@@ -1,0 +1,412 @@
+[
+  {
+    "id": 6,
+    "title": "Database Administrator Specialist",
+    "issuer": "Wahana Ajar Bisnis (wab.co.id)",
+    "issued_date": "2024-06-12",
+    "image_url": "/images/media_1788700885926.png",
+    "credential_url": "https://wab.co.id",
+    "category": "Database",
+    "sort_order": 1
+  },
+  {
+    "id": 7,
+    "title": "Menguasai Fundamental Algoritma",
+    "issuer": "Coding Studio",
+    "issued_date": "2022-12-20",
+    "image_url": "/images/media_1788700885963.png",
+    "credential_url": "https://member.codingstudio.id/certificate-validation/75B5852607-75B56567E0-75A9A793AA",
+    "category": "Programming",
+    "sort_order": 2
+  },
+  {
+    "id": 8,
+    "title": "Belajar jQuery Dasar",
+    "issuer": "CodePolitan",
+    "issued_date": "2023-12-28",
+    "image_url": "/images/media_1788700885974.png",
+    "credential_url": "https://codepolitan.com/c/AQIR3GX",
+    "category": "Web Development",
+    "sort_order": 3
+  },
+  {
+    "id": 9,
+    "title": "Pengenalan Database Menggunakan MySQL",
+    "issuer": "CodePolitan",
+    "issued_date": "2023-07-02",
+    "image_url": "/images/media_1788700885983.png",
+    "credential_url": "https://codepolitan.com/c/WUHGQUO",
+    "category": "Database",
+    "sort_order": 4
+  },
+  {
+    "id": 10,
+    "title": "Belajar Dasar-dasar HTML dan CSS",
+    "issuer": "CodePolitan",
+    "issued_date": "2023-12-29",
+    "image_url": "/images/media_1788700886009.png",
+    "credential_url": "https://codepolitan.com/c/7EZJQVH",
+    "category": "Web Development",
+    "sort_order": 5
+  },
+  {
+    "id": 11,
+    "title": "SQL for Data Science",
+    "issuer": "Great Learning Academy",
+    "issued_date": "2023-12-01",
+    "image_url": "/images/media_1788701618490.png",
+    "credential_url": "https://www.mygreatlearning.com/academy",
+    "category": "Data Science",
+    "sort_order": 6
+  },
+  {
+    "id": 12,
+    "title": "Database Management System",
+    "issuer": "Great Learning Academy",
+    "issued_date": "2023-12-01",
+    "image_url": "/images/media_1788701637725.png",
+    "credential_url": "https://www.mygreatlearning.com/academy",
+    "category": "Database",
+    "sort_order": 7
+  },
+  {
+    "id": 13,
+    "title": "Java Programming",
+    "issuer": "Oracle Academy",
+    "issued_date": "2024-02-06",
+    "image_url": "/images/media_1788701637766.png",
+    "credential_url": "https://academy.oracle.com",
+    "category": "Programming",
+    "sort_order": 8
+  },
+  {
+    "id": 14,
+    "title": "Penggunaan Database MySQL pada Pemrograman PHP",
+    "issuer": "CodePolitan",
+    "issued_date": "2023-12-28",
+    "image_url": "/images/media_1788701638167.png",
+    "credential_url": "https://codepolitan.com/c/4RPH3VT",
+    "category": "Web Development",
+    "sort_order": 9
+  },
+  {
+    "id": 15,
+    "title": "Advanced Risk Management, Security Controls & Monitoring",
+    "issuer": "Packt (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788701658282.jpg",
+    "credential_url": "https://coursera.org/verify/7DTL4NSYHJB3",
+    "category": "Cybersecurity",
+    "sort_order": 10
+  },
+  {
+    "id": 16,
+    "title": "Application Development using Microservices and Serverless",
+    "issuer": "IBM (Coursera)",
+    "issued_date": "2025-12-25",
+    "image_url": "/images/media_1788701814020.jpg",
+    "credential_url": "https://coursera.org/verify/WGQZ5E6ZQ4LF",
+    "category": "Cloud Computing",
+    "sort_order": 11
+  },
+  {
+    "id": 17,
+    "title": "Building Services with ASP.NET Web API",
+    "issuer": "Board Infinity (Coursera)",
+    "issued_date": "2025-12-25",
+    "image_url": "/images/media_1788701814043.jpg",
+    "credential_url": "https://coursera.org/verify/8AK3Z3ZYWW4H",
+    "category": "Web Development",
+    "sort_order": 12
+  },
+  {
+    "id": 18,
+    "title": "ArcGIS Desktop for Spatial Analysis: Go from Basic to Pro",
+    "issuer": "Packt (Coursera)",
+    "issued_date": "2025-12-25",
+    "image_url": "/images/media_1788701814094.jpg",
+    "credential_url": "https://coursera.org/verify/HCPV2JF9N4JL",
+    "category": "Data Science",
+    "sort_order": 13
+  },
+  {
+    "id": 19,
+    "title": "ASP.NET Core Foundation",
+    "issuer": "Board Infinity (Coursera)",
+    "issued_date": "2025-12-30",
+    "image_url": "/images/media_1788701814119.jpg",
+    "credential_url": "https://coursera.org/verify/CA8VR35AFYFT",
+    "category": "Web Development",
+    "sort_order": 14
+  },
+  {
+    "id": 20,
+    "title": "ASP.NET Core MVC [.NET 8] - The Complete Guide",
+    "issuer": "Packt (Coursera)",
+    "issued_date": "2025-10-30",
+    "image_url": "/images/media_1788701814131.jpg",
+    "credential_url": "https://coursera.org/verify/specialization/7YXZ5LCJCTQA",
+    "category": "Web Development",
+    "sort_order": 15
+  },
+  {
+    "id": 21,
+    "title": "Governance and Strategy",
+    "issuer": "Infosec Institute (Coursera)",
+    "issued_date": "2025-11-12",
+    "image_url": "/images/media_1788701871412.png",
+    "credential_url": "https://coursera.org/verify/CDI49W6BKP2V",
+    "category": "Cybersecurity",
+    "sort_order": 16
+  },
+  {
+    "id": 22,
+    "title": "Compliance and Risk Management",
+    "issuer": "HRCI (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788701871555.jpg",
+    "credential_url": "https://coursera.org/verify/X8G44032H733",
+    "category": "Management & Risk",
+    "sort_order": 17
+  },
+  {
+    "id": 23,
+    "title": "Django Web Framework",
+    "issuer": "Meta (Coursera)",
+    "issued_date": "2025-12-26",
+    "image_url": "/images/media_1788701871581.jpg",
+    "credential_url": "https://coursera.org/verify/1K6UPU6Y3LZP",
+    "category": "Web Development",
+    "sort_order": 18
+  },
+  {
+    "id": 24,
+    "title": "Finance for Managers",
+    "issuer": "IESE Business School (Coursera)",
+    "issued_date": "2025-12-31",
+    "image_url": "/images/media_1788701871638.jpg",
+    "credential_url": "https://coursera.org/verify/2QEKD5KYGPGZ",
+    "category": "Business & Management",
+    "sort_order": 19
+  },
+  {
+    "id": 25,
+    "title": "Supply Chain Management Strategy",
+    "issuer": "Rutgers University (Coursera)",
+    "issued_date": "2025-11-13",
+    "image_url": "/images/media_1788704317710.png",
+    "credential_url": "https://coursera.org/verify/ND2H79FD69GI",
+    "category": "Business & Management",
+    "sort_order": 20
+  },
+  {
+    "id": 26,
+    "title": "Design Patterns",
+    "issuer": "University of Alberta (Coursera)",
+    "issued_date": "2025-12-18",
+    "image_url": "/images/media_1788704317879.jpg",
+    "credential_url": "https://coursera.org/verify/WER9S8IVQ738",
+    "category": "Software Engineering",
+    "sort_order": 21
+  },
+  {
+    "id": 27,
+    "title": "Designing User Interfaces and Experiences (UI/UX)",
+    "issuer": "IBM (Coursera)",
+    "issued_date": "2025-12-30",
+    "image_url": "/images/media_1788704317927.jpg",
+    "credential_url": "https://coursera.org/verify/LDSB2U7496JJ",
+    "category": "UI/UX Design",
+    "sort_order": 22
+  },
+  {
+    "id": 28,
+    "title": "Environmental Justice",
+    "issuer": "University of Michigan (Coursera)",
+    "issued_date": "2025-12-30",
+    "image_url": "/images/media_1788704318001.jpg",
+    "credential_url": "https://coursera.org/verify/WMO51M2RKJHA",
+    "category": "General & Sustainability",
+    "sort_order": 23
+  },
+  {
+    "id": 29,
+    "title": "Software Architecture",
+    "issuer": "University of Alberta (Coursera)",
+    "issued_date": "2025-12-18",
+    "image_url": "/images/media_1788704318083.png",
+    "credential_url": "https://coursera.org/verify/SZTEHEZFW7CT",
+    "category": "Software Engineering",
+    "sort_order": 24
+  },
+  {
+    "id": 30,
+    "title": "Introduction to .NET Core",
+    "issuer": "Board Infinity (Coursera)",
+    "issued_date": "2025-12-30",
+    "image_url": "/images/media_1788704622484.jpg",
+    "credential_url": "https://coursera.org/verify/M6N7VIF7LRVY",
+    "category": "Web Development",
+    "sort_order": 25
+  },
+  {
+    "id": 31,
+    "title": "Information Systems Auditing, Controls and Assurance",
+    "issuer": "The Hong Kong University of Science and Technology (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788704622512.jpg",
+    "credential_url": "https://coursera.org/verify/7GB92T59920C",
+    "category": "IT Governance",
+    "sort_order": 26
+  },
+  {
+    "id": 32,
+    "title": "Information Security Risk Management for ISO 27001/ISO 27002",
+    "issuer": "Packt (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788704622587.jpg",
+    "credential_url": "https://coursera.org/verify/PAQDDHWEKNE8",
+    "category": "Cybersecurity",
+    "sort_order": 27
+  },
+  {
+    "id": 33,
+    "title": "Global Supply Chain Management",
+    "issuer": "FIA Business School (Coursera)",
+    "issued_date": "2025-11-12",
+    "image_url": "/images/media_1788704622605.jpg",
+    "credential_url": "https://coursera.org/verify/NOY7RXD2L8HZ",
+    "category": "Business & Management",
+    "sort_order": 28
+  },
+  {
+    "id": 34,
+    "title": "Introduction to Software Engineering",
+    "issuer": "IBM (Coursera)",
+    "issued_date": "2025-12-30",
+    "image_url": "/images/media_1788704656270.jpg",
+    "credential_url": "https://coursera.org/verify/LV5DWIT5M18S",
+    "category": "Software Engineering",
+    "sort_order": 29
+  },
+  {
+    "id": 35,
+    "title": "Marketing: Customer Needs and Wants",
+    "issuer": "IESE Business School (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788742488153.jpg",
+    "credential_url": "https://coursera.org/verify/GAPMP45YJWMO",
+    "category": "Business & Management",
+    "sort_order": 30
+  },
+  {
+    "id": 36,
+    "title": "Object-Oriented Design",
+    "issuer": "University of Alberta (Coursera)",
+    "issued_date": "2025-12-18",
+    "image_url": "/images/media_1788742514660.jpg",
+    "credential_url": "https://coursera.org/verify/0WP4A3VF7CHM",
+    "category": "Software Engineering",
+    "sort_order": 31
+  },
+  {
+    "id": 37,
+    "title": "Protection of Information Assets",
+    "issuer": "Packt (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788742514667.jpg",
+    "credential_url": "https://coursera.org/verify/VERACI8WUG2H",
+    "category": "Cybersecurity",
+    "sort_order": 32
+  },
+  {
+    "id": 38,
+    "title": "Security Governance, Compliance & Risk Management",
+    "issuer": "Packt (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788742514686.jpg",
+    "credential_url": "https://coursera.org/verify/NZPLWCJMW3G2",
+    "category": "Cybersecurity",
+    "sort_order": 33
+  },
+  {
+    "id": 39,
+    "title": "Service-Oriented Architecture",
+    "issuer": "University of Alberta (Coursera)",
+    "issued_date": "2025-12-25",
+    "image_url": "/images/media_1788742538730.jpg",
+    "credential_url": "https://coursera.org/verify/EIK6P2P8K1Z2",
+    "category": "Software Engineering",
+    "sort_order": 34
+  },
+  {
+    "id": 40,
+    "title": "Software Engineering: Modeling Software Systems using UML",
+    "issuer": "The Hong Kong University of Science and Technology (Coursera)",
+    "issued_date": "2025-12-30",
+    "image_url": "/images/media_1788745544744.jpg",
+    "credential_url": "https://coursera.org/verify/NYPYRXXGOK42",
+    "category": "Software Engineering",
+    "sort_order": 35
+  },
+  {
+    "id": 41,
+    "title": "Supply chain management: Be global",
+    "issuer": "Macquarie University (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788745566627.jpg",
+    "credential_url": "https://coursera.org/verify/5LD00SK8MBHV",
+    "category": "Business & Management",
+    "sort_order": 36
+  },
+  {
+    "id": 42,
+    "title": "Strategic Supply Chain Management in Turbulent Times",
+    "issuer": "Technical University of Munich (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788745566681.jpg",
+    "credential_url": "https://coursera.org/verify/F9RZ8N4TQKV7",
+    "category": "Business & Management",
+    "sort_order": 37
+  },
+  {
+    "id": 43,
+    "title": "Strategic Transformation & Global Strategy",
+    "issuer": "University of Huddersfield (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788745566695.jpg",
+    "credential_url": "https://coursera.org/verify/Q8MXD5N9ON20",
+    "category": "Business & Management",
+    "sort_order": 38
+  },
+  {
+    "id": 44,
+    "title": "Sustainability Leadership Development",
+    "issuer": "University of Michigan (Coursera)",
+    "issued_date": "2025-12-30",
+    "image_url": "/images/media_1788746264985.jpg",
+    "credential_url": "https://coursera.org/verify/83XJ66IOLC23",
+    "category": "General & Sustainability",
+    "sort_order": 39
+  },
+  {
+    "id": 45,
+    "title": "Systems Acquisition, Development and Implementation",
+    "issuer": "Packt (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788746265048.jpg",
+    "credential_url": "https://coursera.org/verify/81VLFYLM3T2X",
+    "category": "Software Engineering",
+    "sort_order": 40
+  },
+  {
+    "id": 46,
+    "title": "What is Compliance?",
+    "issuer": "University of Pennsylvania (Coursera)",
+    "issued_date": "2025-12-29",
+    "image_url": "/images/media_1788746265099.jpg",
+    "credential_url": "https://coursera.org/verify/KBK9FY51C1ZA",
+    "category": "Management & Risk",
+    "sort_order": 41
+  }
+]

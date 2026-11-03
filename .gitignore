@@ -6,11 +6,13 @@ backend/node_modules/
 # Build output
 frontend/dist/
 
-# Environment variables (JANGAN commit .env)
+# Environment variables (JANGAN commit .env sensitif backend)
 backend/.env
 .env
 .env.local
-.env.production
+backend/.env.production
+!frontend/.env.production
+!frontend/.env.development
 
 # Upload files (file upload user — tidak perlu di git)
 backend/uploads/

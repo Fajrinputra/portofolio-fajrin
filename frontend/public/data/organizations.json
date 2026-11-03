@@ -1,0 +1,73 @@
+[
+  {
+    "id": 1,
+    "slug": "linstagramcom",
+    "org_name": "Himpunan Mahasiswa Sistem Informasi",
+    "role": "Wakil Ketua Himpunan",
+    "period": "2023 - 2024",
+    "description": "Menjabat sebagai wakil ketua himpunan dan menjadi salah satu motor penggerak keberlangsungan dan keberlanjutan dari pergerakan Himpunan Mahasiswa Sistem Informasi Universitas Andalas",
+    "achievements": "",
+    "logo_url": "/images/7f2f1638-e0df-479b-aa53-d5ec2c593438.jpg",
+    "gallery": [
+      "/images/35594b45-52b9-4968-a1f1-337f790b6c36.jpg",
+      "/images/7d64aa4b-1935-4012-8bea-910a4ed02672.jpg",
+      "/images/b850a9da-2922-4ccd-aecf-c82cc7394ceb.png"
+    ],
+    "sort_order": 1
+  },
+  {
+    "id": 2,
+    "slug": "hmsi-unand-ketua",
+    "org_name": "Himpunan Mahasiswa Sistem Informasi",
+    "role": "Ketua Himpunan ",
+    "period": "2024 - 2025",
+    "description": "Melanjutkan langkah sebelum nya untuk melakukan perubahan dan penataan ulang terhadap tata kelola serta pengembangan lebih lanjut terhadap organisasi",
+    "achievements": "",
+    "logo_url": "/images/ee9574e0-3145-47e5-9db5-1afc6822d044.jpg",
+    "gallery": [
+      "/images/4290593c-0386-4d8f-af4c-dd843b7c91bb.jpg",
+      "/images/b373df30-f43d-42d3-a8c1-db82a26f3740.jpg",
+      "/images/0cb38f3b-ace4-4120-bcfb-75fc0e4ea06c.jpg",
+      "/images/7f4efdd5-0dd5-4860-910f-03f9463d1b3c.jpg",
+      "/images/6c92abc7-60a9-4e63-b96b-fc70cd3a57da.jpg",
+      "/images/527f9e1b-efe0-465a-b44e-650ea5252b45.jpg",
+      "/images/a73fff88-b15d-4079-b813-628ea8189d88.jpg",
+      "/images/a2150943-1c95-490e-8601-f90da2d9a04d.png"
+    ],
+    "sort_order": 2
+  },
+  {
+    "id": 3,
+    "slug": "leasiftiunandacid",
+    "org_name": "Laboratory of Enterprise Application",
+    "role": "Anggota Pengabdian & Pelatihan",
+    "period": "2024",
+    "description": "LEA SI UNAND a.k.a LPBD\n\nBerkesempatan menjadi bagian dalam proses pengabdian dan pelatihan dari implementasi dan kinerja laboratorium yang berada di departemen sistem informasi yang berfokus pada pembangunan sistem yang bersifat \"Enterprise\"",
+    "achievements": "",
+    "logo_url": "/images/fab11b81-af61-4de2-b107-82a1a07d4f37.jpg",
+    "gallery": [
+      "/images/22473c61-9620-4e5a-a3e1-7e1219bef22f.jpg",
+      "/images/f21d0bf4-2440-427e-972a-9e912d9ca692.jpg",
+      "/images/7dd692fc-31e4-4d9c-826c-8e41a5d64595.jpg",
+      "/images/4414b3aa-1253-4876-a3f4-8fb1fc9e45b4.jpg",
+      "/images/5e743c30-d4b5-4984-b9c1-8235e12490a7.png"
+    ],
+    "sort_order": 3
+  },
+  {
+    "id": 4,
+    "slug": "kelompok-keilmuan-sistem-enterpise",
+    "org_name": "Kelompok Keilmuan Sistem Enterpise",
+    "role": "Anggota Pengabdian & Pelatihan",
+    "period": "2025 ",
+    "description": "Berperan sebagaii penanggung jawab dalam proses pengabdian dan pelatihan pada kegiatan Kelompok Keilmuan Sistem Enterpise",
+    "achievements": "",
+    "logo_url": "/images/7dbf1197-c0c9-472e-b251-ec9993c5eeff.jpg",
+    "gallery": [
+      "/images/ca109c8a-84e4-4f4c-8580-a70e5c113199.jpeg",
+      "/images/6d0be5c8-8c7f-4b0e-ad02-f53f19459dfa.jpg",
+      "/images/488f55ed-4ebc-4a24-b493-c86ddf2ef80b.jpg"
+    ],
+    "sort_order": 4
+  }
+]

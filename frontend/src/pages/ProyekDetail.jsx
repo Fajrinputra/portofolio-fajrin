@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ExternalLink, Code2, ChevronRight } from 'lucide-react';
 import { getProjectBySlug, getProjects } from '../services/api';
 import Lightbox from '../components/Lightbox';
@@ -65,6 +66,10 @@ export default function ProyekDetail() {
 
   return (
     <div className="bg-bg-primary">
+      <Helmet>
+        <title>{`${project.title} | Fajrin Putra Pratama`}</title>
+        <meta name="description" content={project.tagline || project.background || `Detail proyek ${project.title}`} />
+      </Helmet>
       {/* Breadcrumb */}
       <div className="border-b border-border-color bg-bg-secondary">
         <div className="container-custom py-3">

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { getDesigns } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Card from '../components/Card';
@@ -29,6 +30,13 @@ export default function UiUx() {
 
   return (
     <div className="bg-bg-primary section-py">
+      <Helmet>
+        <title>Desain UI/UX | Fajrin Putra Pratama</title>
+        <meta
+          name="description"
+          content="Studi kasus desain UI/UX, prototipe aplikasi mobile dan web, wireframing, dan desain produk digital oleh Fajrin Putra Pratama."
+        />
+      </Helmet>
       <div className="container-custom">
         <div className="max-w-2xl mb-10">
           <SectionHeading

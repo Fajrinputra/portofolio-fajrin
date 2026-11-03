@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, Calendar, Briefcase, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getOrganizationBySlug } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
@@ -60,6 +61,10 @@ export default function OrganisasiDetail() {
 
   return (
     <div className="section-py">
+      <Helmet>
+        <title>{`${org.org_name} | Fajrin Putra Pratama`}</title>
+        <meta name="description" content={org.description?.slice(0, 150) || `Pengalaman di ${org.org_name}`} />
+      </Helmet>
       <div className="container-custom">
 
         {/* Back button */}

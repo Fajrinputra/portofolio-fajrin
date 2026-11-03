@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { getJourneys } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
 import Timeline from '../components/Timeline';
@@ -17,6 +18,13 @@ export default function Perjalanan() {
 
   return (
     <div className="bg-bg-primary section-py">
+      <Helmet>
+        <title>Perjalanan | Fajrin Putra Pratama</title>
+        <meta
+          name="description"
+          content="Riwayat pendidikan dan rekam jejak akademik Fajrin Putra Pratama dari pendidikan dasar hingga meraih gelar Sarjana Sistem Informasi Universitas Andalas."
+        />
+      </Helmet>
       <div className="container-custom">
         <div className="max-w-2xl mb-14">
           <SectionHeading

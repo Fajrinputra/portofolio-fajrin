@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { Download, MapPin, Calendar, GraduationCap, X, ChevronLeft, ChevronRight, Images } from 'lucide-react';
 import { getProfile } from '../services/api';
 import SectionHeading from '../components/SectionHeading';
@@ -163,6 +164,13 @@ export default function Profil() {
 
   return (
     <div className="bg-bg-primary">
+      <Helmet>
+        <title>Profil | Fajrin Putra Pratama</title>
+        <meta
+          name="description"
+          content="Profil lengkap, keahlian, dan tujuan profesional Fajrin Putra Pratama — Software Developer &amp; UI/UX Designer lulusan Sistem Informasi Universitas Andalas."
+        />
+      </Helmet>
       {/* Hero Section */}
       <section className="section-py border-b border-border-color">
         <div className="container-custom">
